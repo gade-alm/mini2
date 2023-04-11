@@ -68,12 +68,12 @@ char	*ft_itoa(int n)
 	return (num);
 }
 
-int	printerror(char *str)
+int	printerror(char *str, int fd)
 {
-	if (*str)
-		prints(str, 1);
+	if (str && *str)
+		prints(str, fd);
 	if (this()->env)
 		free_matrix(this()->env);
 	rmlist(&this()->cmds);
-	exit (1);
+	exit ((unsigned char)this()->status);
 }

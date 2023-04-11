@@ -61,3 +61,17 @@ char	*alloc_string(char *string)
 	new[j] = 0;
 	return (new);
 }
+
+char	**ft_realloc(char **matrix, int change)
+{
+	int		i;
+	char	**new;
+
+	i = -1 + (!matrix);
+	while (matrix && matrix[++i])
+		;
+	new = malloc(sizeof(char *) * ((i + 1) + change));
+	if (!new)
+		return (NULL);
+	return (new);
+}

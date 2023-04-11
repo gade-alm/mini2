@@ -26,13 +26,6 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return ((unsigned char)s1[a] - (unsigned char)s2[a]);
 }
 
-t_env	*envs(void)
-{
-	static t_env	envs;
-
-	return (&envs);
-}
-
 int	verify_var(char *str, char *env)
 {
 	int	i;

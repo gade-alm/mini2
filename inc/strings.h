@@ -25,6 +25,6 @@ int			ft_strncmp(const char *s1, const char *s2, size_t n);
 long		ft_atoi(char *s);
 char		*ft_strncpy(char *str, char *temp, int size);
 char		*ft_itoa(int n);
-int			printerror(char *str);
+int			printerror(char *str, int fd);
 
 #endif

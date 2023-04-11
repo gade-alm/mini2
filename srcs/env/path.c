@@ -38,7 +38,7 @@ char	*fusion_path(char *s1, char *s2)
 	i += len(s1) + len(s2);
 	s3 = malloc(sizeof(char) * (i + 2));
 	if (!s3)
-		printerror("malloc error");
+		printerror("malloc error", 2);
 	while (s1[++j] && j < len(s1))
 		s3[++k] = s1[j];
 	s3[++k] = '/';
@@ -77,7 +77,6 @@ int	find_path(t_cmd *cmd, char *path)
 
 int set_path(t_cmd *cmd)
 {
-	printf("entrou\n");
 	if (cmd->path)
 	{
 		if (access(cmd->path, F_OK) == -1)

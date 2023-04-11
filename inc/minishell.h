@@ -28,30 +28,14 @@
 # include "struct.h"
 # include "strings.h"
 
-typedef struct s_args	t_args;
-typedef struct s_env	t_env;
-
-struct s_args{
-	int		input;
-	int		output;
-	char	**cmd;
-	char	*path;
-	char	*next;
-	char	*save_var;
-};
-
-struct s_env{
-	char	**env;
-};
-
 //UTILS AREA
 int		ft_strlen(const char *str);
 int		ft_strcmp(const char *s1, const char *s2);
 int		is_space(char *str, int i);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strchr(const char *s, int c);
-t_args	*args(void);
 void	sig_handler(int signal);
+char	**ft_realloc(char **matrix, int change);
 
 //STRINGS AREA
 char	*ft_strdup(const char *s1);
@@ -74,7 +58,6 @@ char	**handle_commands(char *str, char **envp);
 void	cmds_split(char **arg);
 
 //EXPANDER AREA
-t_env	*envs(void);
 char	*expand_var(char *str, char **env, int i);
 int		strcharlen(char *str, char c);
 char	*print_env(char *env, int i);
