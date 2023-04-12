@@ -6,7 +6,7 @@
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:38:11 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/04 18:22:59 by grebin           ###   ########.fr       */
+/*   Updated: 2023/04/12 22:23:16 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,19 +98,21 @@ int	set_cmd(char **arg, int i, int ncmd)
 }
 
 
-void	checke_path(char **str, int i, int ncmd)
+char	**check_path(char **str, int i, int ncmd)
 {
-	int j;
+	char *temp;
+	char *temp2;
 
-	j = -1;
-	while (str[i][++j])
-	{
-		if (str[i][j] == '/')
-		{
-			this()->cmds->path = ft_strdup(str[i]); // strrchar achar a / andar + 1 e fazer dup pro str[i] e dar free ao antigo. 
-			break ;
-		}
-	}
+	temp = ft_strrchr(str[i], '/');
+	if (!temp)
+		return (str);
+	selectnode(this()->cmds, ncmd)->path = ft_strdup(str[i]);
+	temp2 = str[i];
+	str[i] = ft_strdup(temp + 1);
+	free(temp2);
+	
+	return (str);
+		
 }
 
 
@@ -130,7 +132,7 @@ void cmds_split(char **arg)
 	}
 	while (--ncmd > 0)
 		pipe_handler(selectnode(this()->cmds, ncmd - 1), selectnode(this()->cmds, ncmd));
-	//printlist(this()->cmds);
+	printlist(this()->cmds);
 	if (arg)
 		free_matrix(arg);
 }

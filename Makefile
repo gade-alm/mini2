@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+         #
+#    By: grebin <grebin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/25 10:52:52 by gabriel           #+#    #+#              #
-#    Updated: 2023/04/11 12:17:23 by gade-alm         ###   ########.fr        #
+#    Updated: 2023/04/12 22:44:14 by grebin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,8 +34,6 @@ SRCS		= $(SRCS_DIR)/main.c \
 			$(SRCS_DIR)/lists/listutils_02.c \
 			$(SRCS_DIR)/lists/listsred.c \
 			$(SRCS_DIR)/signals/sig_handler.c \
-						
-		
 
 SRCS_DIR	= srcs
 
