@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 08:20:18 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/04 18:20:30 by grebin           ###   ########.fr       */
+/*   Updated: 2023/04/13 12:59:16 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void builtins(t_cmd *cmd)
 	if (ft_strncmp("pwd", cmd->cmd[0], 4) == 0)
 		this()->status = pwd(cmd->output);
 	if (ft_strncmp("exit", cmd->cmd[0], 3) == 0)
-		exit_prog(cmd, this()->status);
+		this()->status = exit_prog(cmd, this()->status);
 	rmnode(&this()->cmds);
 }
 

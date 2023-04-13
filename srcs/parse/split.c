@@ -6,31 +6,23 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 15:39:01 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/03/27 18:40:48 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/13 12:19:28 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-char	*ft_word(const char *s, int len)
+char	*ft_word(const char *s, char *word, int len)
 {
-	char			*word;
-	int				i;
-	int				j;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = -1;
-	word = (char *)malloc(sizeof(char) * (len + 1));
-	if (!word)
-		return (NULL);
 	while (s[++j] == ' ' || s[j] == '\t')
 		;
 	while (s[j] && j < len)
-	{
-		word[i] = s[j];
-		i++;
-		j++;
-	}
+		word[i++] = s[j++];
 	word[i] = '\0';
 	return (word);
 }
@@ -73,10 +65,8 @@ char	**ft_split(char *str)
 	while (++i < num_args)
 	{
 		word_size = token_len(str);
-		split[i] = malloc(sizeof(char) * (word_size + 1));
-		if (!split[i])
-			return (NULL);
-		split[i] = ft_word(str, word_size);
+		split[i] = alloc_string(str);
+		split[i] = ft_word(str, split[i], word_size);
 		str += word_size;
 	}
 	split[i] = NULL;

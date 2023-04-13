@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:48:52 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/11 12:04:58 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/13 12:57:30 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,19 +83,18 @@ int exit_prog(t_cmd *cmd, int status)
 {
 	int argc;
 
-
 	argc = 0;
-	prints("exit\n", 1);
+	prints("exit", 1);
 	while (cmd->cmd[++argc])
 		;
 	if (cmd->cmd[1] && is_nbr(cmd->cmd[1]))
 	{
-		prints(" numeric argument required\n", 2);
-		status = 1;
+		prints("numeric argument required\n", 2);
+		status = 2;
 	}
 	else if (argc > 2)
 	{
-		prints(" too many args", 2);
+		prints("too many args\n", 2);
 		return (1);
 	}
 	else if (cmd->cmd[1])

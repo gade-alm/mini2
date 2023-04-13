@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:13:25 by gabriel           #+#    #+#             */
-/*   Updated: 2023/04/12 22:44:31 by grebin           ###   ########.fr       */
+/*   Updated: 2023/04/13 12:46:50 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
-int main(int ac, char **av, char **envp)
+int	main(int ac, char **av, char **envp)
 {
-	char *str;
+	char	*str;
 
 	(void)ac;
 	(void)av;
@@ -31,6 +31,7 @@ int main(int ac, char **av, char **envp)
 			add_history(str);
 			cmds_split(handle_commands(str, this()->env));
 			executor(this()->cmds);
+			free (str);
 		}
 		if (!str)
 		{
