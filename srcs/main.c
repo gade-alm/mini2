@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:13:25 by gabriel           #+#    #+#             */
-/*   Updated: 2023/04/13 12:46:50 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:02:41 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,11 @@ int	main(int ac, char **av, char **envp)
 		if (str && *str)
 		{
 			add_history(str);
-			cmds_split(handle_commands(str, this()->env));
-			executor(this()->cmds);
+			if (check_string(str))
+			{
+				cmds_split(handle_commands(str, this()->env));
+				executor(this()->cmds);
+			}
 			free (str);
 		}
 		if (!str)
