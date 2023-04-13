@@ -19,7 +19,7 @@
 
 int			ft_strlen(const char *s);
 char		*ft_strdup(const char *s1);
-int			prints(char *str, char fd);
+int			prints(char *error, char fd, char *name);
 char		*ft_strjoin(char const *s1, char const *s2);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 long		ft_atoi(char *s);

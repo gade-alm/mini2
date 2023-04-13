@@ -29,12 +29,15 @@ char	*ft_strdup(const char *s1)
 	return (scpy);
 }
 
-int	prints(char *str, char fd)
+int	prints(char *error, char fd, char *name)
 {
-	int	i;
-
-	i = ft_strlen(str);
-	write(fd, str, i);
+	if (name)
+	{
+		write(fd, "minishell: ", 12);
+		write(fd, name, ft_strlen(name));
+		write(fd, ": ", 2);
+	}
+	write(fd, error, ft_strlen(error));
 	write(fd, "\n", 1);
 	return (1);
 }

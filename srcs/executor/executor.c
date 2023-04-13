@@ -40,6 +40,7 @@ void builtins(t_cmd *cmd)
 		this()->status = pwd(cmd->output);
 	if (ft_strncmp("exit", cmd->cmd[0], 3) == 0)
 		this()->status = exit_prog(cmd, this()->status);
+	child_clean(this()->cmds);
 	rmnode(&this()->cmds);
 }
 
@@ -48,59 +49,73 @@ void	child(char **env, int input, int output)
 	if(input != 0)
 	{
 		if (dup2(input, STDIN_FILENO) == -1)
-			prints("Error on first Dup2", 2);
+			perror("dup1");
 		close(input);
 	}
-	if(output != 1)
+	if (output != 1)
 	{
 		if (dup2(output, STDOUT_FILENO) == -1)
-			prints("Error on second Dup2", 2);
+			perror("dup2");
 		close(output);
 	}
 	if (execve(this()->cmds->path, this()->cmds->cmd, env) == -1)
 	{
 		rmlist(&this()->cmds);
-		prints("Error executing command", 2);
+		free_matrix(env);
+		perror("execve");
 	}
 	
 }
 
 int cmd_handler(char **env, int input, int output)
 {
-	set_path(this()->cmds); // not found status 127 e adicionar msg de erro
-	this()->cmds->pid = fork();
-	if (this()->cmds->pid == -1)
-		prints("Error creating second fork", 2);
-	if (this()->cmds->pid == 0)
+	if (set_path(this()->cmds) == -1)
 	{
-		child_clean(this()->cmds->next);
-		child(env, input, output);
+		prints("Command not found", 2, this()->cmds->cmd[0]);
+		return (127);
 	}
-	if (output != 1)
-		close(output);
-	if (input != 0)
-		close(input);
+	child_clean(this()->cmds->next);
+	child(env, input, output);
 	rmnode(&this()->cmds);
 	return (0);
+}
+int	is_builtin()
+{
+	return(ft_strncmp("cd",this()->cmds->cmd[0], 3) == 0 || ft_strncmp("echo", \
+		this()->cmds->cmd[0], 5) == 0 || ft_strncmp("exit",this()->cmds->cmd[0], 5) == 0 \
+		|| ft_strncmp("unset", this()->cmds->cmd[0], 6) == 0 || ft_strncmp("pwd", \
+		this()->cmds->cmd[0], 4) == 0 || ft_strncmp("export", this()->cmds->cmd[0], 7) == 0 \
+		|| ft_strncmp("env", this()->cmds->cmd[0], 4) == 0);
 }
 
 void executor(t_cmd *cmd)
 {
-	int	i;
-
-	i = 0;
 	while (this()->cmds)
 	{
-		if (ft_strncmp("cd",this()->cmds->cmd[0], 3) == 0 || ft_strncmp("echo", \
-		this()->cmds->cmd[0], 5) == 0 || ft_strncmp("exit",this()->cmds->cmd[0], 5) == 0 \
-		|| ft_strncmp("unset", this()->cmds->cmd[0], 6) == 0 || ft_strncmp("pwd", \
-		this()->cmds->cmd[0], 4) == 0 || ft_strncmp("export", this()->cmds->cmd[0], 7) == 0 \
-		|| ft_strncmp("env", this()->cmds->cmd[0], 4) == 0)
+		if (is_builtin() && this()->cmdsindex == 1)
+		{
 			builtins(cmd);
-		else
-			this()->status = cmd_handler(this()->env, this()->cmds->input, this()->cmds->output);
-		i++;
+			return ;
+		}
+		this()->cmds->pid = fork();
+		if (this()->cmds->pid == -1)
+			prints("Error creating second fork", 2, this()->cmds->cmd[0]);
+		if (this()->cmds->pid == 0)
+		{
+			if (is_builtin())
+			{
+				builtins(cmd);
+				exit(this()->status);
+			}
+			else 
+				this()->status = cmd_handler(this()->env, this()->cmds->input, this()->cmds->output);
+		}
+		if (this()->cmds->output != 1)
+			close(this()->cmds->output);
+		if (this()->cmds->input != 0)
+			close(this()->cmds->input);
+		rmnode(&this()->cmds);
 	}
-	while (i-- > 0)
+	while (this()->cmdsindex-- > 0)
 		wait(NULL);
 }

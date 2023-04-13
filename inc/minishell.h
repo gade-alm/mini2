@@ -39,7 +39,6 @@ char	**ft_realloc(char **matrix, int change);
 
 //STRINGS AREA
 char	*ft_strdup(const char *s1);
-int		prints(char *str, char fd);
 char	*ft_strjoin(char const *s1, char const *s2);
 
 //PARSE AREA

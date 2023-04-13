@@ -19,10 +19,10 @@ int	pwd(int output)
 	pwd = getcwd(NULL, 0);
 	if (!pwd)
 	{
-		perror("pwd");
+		perror("minishell: pwd");
 		return (1);
 	}
-	prints(pwd, output);
+	prints(pwd, output, NULL);
 	free(pwd);
 	return (0);
 }
@@ -35,12 +35,12 @@ int	cd(t_cmd *cmd, char **env)
 		add_pwd();
 	if (cmd->cmd[2])
 	{
-		prints("too many arguments", 2);
+		prints("too many arguments", 2, "exit");
 		return (1);
 	}	
 	if (chdir(cmd->cmd[1]))
 	{
-		perror("chdir");
+		perror("minishell: chdir");
 		return (1);
 	}
 	change_pwd();
@@ -56,12 +56,12 @@ int	env(t_cmd *cmd, char **env, int output)
 		return (1);
 	if (!env)
 	{
-		prints("Env doesn't exist", 2);
+		prints("minishell: Env doesn't exist", 2, NULL);
 		return (1);
 	}
 	i = -1;
 	while (env[++i])
-		prints(env[i], output);
+		prints(env[i], output, NULL);
 	return (0);
 }
 
@@ -72,7 +72,7 @@ int	echo(t_cmd *cmd, int output)
 	i = 0 + (ft_strncmp("-n", cmd->cmd[1], 3) == 0);
 	while (cmd->cmd[++i])
 	{
-		prints(cmd->cmd[i], output);
+		prints(cmd->cmd[i], output, NULL);
 		if (cmd->cmd[i + 1])
 			write(output, " ", 1);
 	}

@@ -17,12 +17,12 @@ int	pipe_handler(t_cmd *first, t_cmd *second)
 	int fd[2];
 
 	if (pipe(fd) == -1)
-		return (prints("pipe error", 2));
-	if (first->input == 0)
-		first->input = fd[1];
+		return (prints("minishell: pipe error", 2, NULL));
+	if (first->output == 1)
+		first->output = fd[1];
 	else
 		close(fd[1]);
-	if (second->output == 1)
+	if (second->input == 0)
 		second->input = fd[0];
 	else
 		close(fd[0]);
@@ -97,38 +97,45 @@ int	set_cmd(char **arg, int i, int ncmd)
 	return (i + (arg[i] && arg[i][0] == '|'));
 }
 
-char	**check_path(char **str, int i, int ncmd)
+int	check_path(t_cmd *cmd)
 {
 	char *temp;
 	char *temp2;
 
-	temp = ft_strrchr(str[i], '/');
+	temp = ft_strrchr(cmd->cmd[0], '/');
 	if (!temp)
-		return (str);
-	selectnode(this()->cmds, ncmd)->path = ft_strdup(str[i]);
-	temp2 = str[i];
-	str[i] = ft_strdup(temp + 1);
+		return (1);
+	cmd->path = ft_strdup(cmd->cmd[0]);
+	temp2 = cmd->cmd[0];
+	cmd->cmd[0] = ft_strdup(temp + 1);
 	free(temp2);
-	return (str);
+	return (0);
 }
 
 void cmds_split(char **arg)
 {
 	int	i;
 	int	ncmd;
+	t_cmd	*temp;
 
 	ncmd = 0;
 	i = 0;
 	while (arg && arg[i])
 	{
 		addtolast(&this()->cmds, createnode(NULL));
-		arg = check_path(arg, i, ncmd);
 		i = set_cmd(arg, i, ncmd);
+		this()->cmdsindex++;
 		ncmd++;
 	}
 	while (--ncmd > 0)
 		pipe_handler(selectnode(this()->cmds, ncmd - 1), selectnode(this()->cmds, ncmd));
-	// printlist(this()->cmds);
+	temp = this()->cmds;
+	while (temp)
+	{
+		check_path(temp);
+		temp = temp->next;
+	}
+	//printlist(this()->cmds);
 	if (arg)
 		free_matrix(arg);
 }

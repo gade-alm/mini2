@@ -35,7 +35,7 @@ char	**change_var(char *old, char *new, char **env, int limit)
 		{
 			temp = env[i];
 			free (temp);
-			env[i] = alloc_string(new);
+			env[i] = new;
 			return (env);
 		}
 	}

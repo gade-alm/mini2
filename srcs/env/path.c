@@ -34,7 +34,6 @@ char	*fusion_path(char *s1, char *s2)
 	k = -1;
 	if (!s1 || !s2)
 		return (NULL);
-	//printf("s1: %s\n", s2);
 	i += len(s1) + len(s2);
 	s3 = malloc(sizeof(char) * (i + 2));
 	if (!s3)
@@ -54,14 +53,13 @@ int	find_path(t_cmd *cmd, char *path)
 	char *temp;
 	
 	if (!path)
-		return (1);
+		return (-1);
 	path += 5;
-
 	while (*path)
 	{
 		temp = fusion_path(path, cmd->cmd[0]);
 		if (!temp)
-			return (prints("command not found", 2));
+			printerror("malloc error", 2);
 		if (access(temp, F_OK) != -1)
 		{
 			cmd->path = temp;
@@ -71,7 +69,7 @@ int	find_path(t_cmd *cmd, char *path)
 		path += len(path) + (path[len(path)] == ':');
 	}
 	if (!cmd->path)
-		return (prints("Command not found.", 2));
+		return (-1);
 	return (0);
 }
 
@@ -80,9 +78,9 @@ int set_path(t_cmd *cmd)
 	if (cmd->path)
 	{
 		if (access(cmd->path, F_OK) == -1)
-			return (1);
+			return (-1);
+		return (0);
 	}
 	else
-		find_path(this()->cmds, check_var("PATH=", this()->env, 5));
-	return (0);
+		return (find_path(this()->cmds, check_var("PATH=", this()->env, 5)));
 }

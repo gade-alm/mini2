@@ -39,7 +39,7 @@ int add_pwd()
 
 	pwd = getcwd(NULL, 0);
 	if (!pwd)
-		return (prints("PWD not found", 2));
+		return (prints("PWD not found", 2, NULL));
 	temp = ft_strjoin("PWD=", pwd);
 	this()->env = add_var(temp, this()->env);
 	free(pwd);
@@ -54,7 +54,6 @@ void change_pwd()
 
 	temp = ft_strdup(check_var("PWD=", this()->env, 3));
 	old = ft_strjoin("OLD", temp);
-	prints(old, 1);
 	free(temp);
 	if  (!check_var("OLDPWD=", this()->env, 7))
 		this()->env = add_var(old, this()->env);
@@ -84,17 +83,17 @@ int exit_prog(t_cmd *cmd, int status)
 	int argc;
 
 	argc = 0;
-	prints("exit", 1);
+	prints("exit", 1, NULL);
 	while (cmd->cmd[++argc])
 		;
 	if (cmd->cmd[1] && is_nbr(cmd->cmd[1]))
 	{
-		prints("numeric argument required\n", 2);
+		prints("numeric argument required\n", 2, "exit");
 		status = 2;
 	}
 	else if (argc > 2)
 	{
-		prints("too many args\n", 2);
+		prints("too many args\n", 2, "exit");
 		return (1);
 	}
 	else if (cmd->cmd[1])

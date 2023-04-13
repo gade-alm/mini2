@@ -71,7 +71,7 @@ char	*ft_itoa(int n)
 int	printerror(char *str, int fd)
 {
 	if (str && *str)
-		prints(str, fd);
+		prints(str, fd, NULL);
 	if (this()->env)
 		free_matrix(this()->env);
 	rmlist(&this()->cmds);
