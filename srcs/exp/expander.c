@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 10:12:13 by gabriel           #+#    #+#             */
-/*   Updated: 2023/04/11 11:24:31 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/14 09:50:14 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*find_var(char *str, int i)
 
 	j = 0;
 	if (str[i + 1] == '?')
-		return (ft_strdup("status"));
+		return ("status");
 	while (str[++i] && str[i] != ' ' && str[i] != '\t' \
 	&& str[i] != '"' && str[i] != '$')
 		j++;
@@ -115,5 +115,7 @@ char	*expand_var(char *str, char **env, int i)
 	if (!value)
 		return (0);
 	joint = join_expander(str, value, i);
+	free (value);
+	free (str);
 	return (joint);
 }
