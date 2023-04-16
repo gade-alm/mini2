@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 08:20:18 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/14 09:43:18 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/04/16 14:11:22 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void executor(t_cmd *cmd)
 			builtins(cmd);
 			return ;
 		}
-		this()->cmds->pid = fork();
+		// this()->cmds->pid = fork();
 		if (this()->cmds->pid == -1)
 			prints("Error creating second fork", 2, this()->cmds->cmd[0]);
 		if (this()->cmds->pid == 0)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:53:03 by gabriel           #+#    #+#             */
-/*   Updated: 2023/04/13 10:59:09 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/16 14:26:16 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		check_pipe(char *str, int i);
 int		check_redirection(char *str, int i, char c);
 int		token_helper(char *str, char c, int i);
 int		token_len(char *str);
-char	**handle_commands(char *str, char **envp);
+char	**handle_commands(char *str, char **envp, int i);
 void	cmds_split(char **arg);
 
 //EXPANDER AREA
