@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 10:12:13 by gabriel           #+#    #+#             */
-/*   Updated: 2023/04/14 09:50:14 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/04/17 11:30:26 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ char	*expand_var(char *str, char **env, int i)
 		return (0);
 	joint = join_expander(str, value, i);
 	free (value);
+	free (key);
 	free (str);
 	return (joint);
 }

@@ -6,16 +6,16 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:48:52 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/13 12:57:30 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/17 11:36:58 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/builtins.h"
 
-int export(t_cmd *cmd, char **env)
+int	export(t_cmd *cmd, char **env)
 {
-	int i;
-	char *temp;
+	int		i;
+	char	*temp;
 
 	i = -1;
 	if (!cmd->cmd[1])
@@ -26,48 +26,50 @@ int export(t_cmd *cmd, char **env)
 	while (temp[++i] != '=' && temp[i])
 		;
 	if (check_var(temp, env, ++i))
-		this()->env = change_var(temp, temp, env, i);
+		(this())->env = change_var(temp, temp, env, i);
 	else
-		this()->env = add_var(temp, env);
+		(this())->env = add_var(temp, env);
 	return (0);
 }
 
-int add_pwd()
+int	add_pwd(void)
 {
-	char *pwd;
-	char *temp;
+	char	*pwd;
+	char	*temp;
 
 	pwd = getcwd(NULL, 0);
 	if (!pwd)
 		return (prints("PWD not found", 2, NULL));
 	temp = ft_strjoin("PWD=", pwd);
-	this()->env = add_var(temp, this()->env);
+	(this())->env = add_var(temp, this()->env);
 	free(pwd);
 	return (0);
 }
 
-void change_pwd()
+void	change_pwd(void)
 {
-	char *old;
-	char *temp;
-	char *pwd;
+	char	*old;
+	char	*temp;
+	char	*pwd;
 
 	temp = ft_strdup(check_var("PWD=", this()->env, 3));
 	old = ft_strjoin("OLD", temp);
 	free(temp);
-	if  (!check_var("OLDPWD=", this()->env, 7))
-		this()->env = add_var(old, this()->env);
+	if (!check_var("OLDPWD=", this()->env, 7))
+		(this())->env = add_var(old, this()->env);
 	else
-		this()->env = change_var(check_var("OLDPWD=", this()->env, 7), old, this()->env, 7);
-	temp  = getcwd(NULL, 0);
+		(this())->env = change_var(check_var("OLDPWD=", this()->env, 7), \
+		old, this()->env, 7);
+	temp = getcwd(NULL, 0);
 	pwd = ft_strjoin("PWD=", temp);
-	this()->env = change_var(check_var("PWD=", this()->env, 4), pwd, this()->env, 4);
+	(this())->env = change_var(check_var("PWD=", this()->env, 4), \
+	pwd, this()->env, 4);
 	free(temp);
 }
 
-int is_nbr(char *str)
+int	is_nbr(char *str)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (str[++i])
@@ -78,9 +80,9 @@ int is_nbr(char *str)
 	return (0);
 }
 
-int exit_prog(t_cmd *cmd, int status)
+int	exit_prog(t_cmd *cmd, int status)
 {
-	int argc;
+	int	argc;
 
 	argc = 0;
 	prints("exit", 1, NULL);

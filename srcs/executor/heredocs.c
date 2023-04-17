@@ -3,20 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   heredocs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:52:38 by grebin            #+#    #+#             */
-/*   Updated: 2023/03/28 14:43:34 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2023/04/17 11:44:52 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/executor.h"
 
+char	*expand_var_loop(char *str)
+{
+	int	i;
 
-int heredocs(char *delim)
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] == '\'')
+			while (str[i] && str[i] != '\'')
+				i++;
+		if (str[i] == '$' && str[i + 1])
+		{
+			str = expand_var(str, this()->env, i);
+			i = -1;
+		}
+	}
+	return (str);
+}
+
+int	heredocs(char *delim)
 {
 	char	*temp;
-	int 	fd[2];
+	int		fd[2];
 
 	temp = NULL;
 	if (pipe(fd) == -1)
@@ -25,7 +43,7 @@ int heredocs(char *delim)
 	{
 		if (temp)
 		{
-			// meter o expand
+			temp = expand_var_loop(temp);
 			prints(temp, fd[1], NULL);
 			free(temp);
 		}

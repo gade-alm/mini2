@@ -6,17 +6,18 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:52:38 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/11 12:06:02 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/17 11:22:11 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/executor.h"
 
-int prep_heredocs(char *arg)
+int	prep_heredocs(char *arg)
 {
-	int fd[2];
-	int n = 0;
+	int	fd[2];
+	int	n;
 
+	n = 0;
 	if (pipe(fd) == -1)
 		return (-1);
 	n = ft_strlen(arg);
@@ -24,12 +25,12 @@ int prep_heredocs(char *arg)
 	return (fd[0]);
 }
 
-int heredocs(t_red *red)
+int	heredocs(t_red *red)
 {
-	char *temp;
-	char *temp1;
-	char *arg;
-	
+	char	*temp;
+	char	*temp1;
+	char	*arg;
+
 	temp = NULL;
 	arg = NULL;
 	while (ft_strncmp(temp, red->delim, ft_strlen(temp)) != 0)
@@ -44,7 +45,7 @@ int heredocs(t_red *red)
 	return (prep_heredocs(arg));
 }
 
-void prep_fd(t_cmd *cmd)
+void	prep_fd(t_cmd *cmd)
 {
 	while (cmd->red)
 	{
@@ -64,7 +65,8 @@ void prep_fd(t_cmd *cmd)
 		if (cmd->red->out == 1)
 			cmd->output = open(cmd->cmd[0], O_CREAT | O_TRUNC | O_WRONLY, 0644);
 		if (cmd->red->out == 2)
-			cmd->output = open(cmd->cmd[0], O_CREAT | O_APPEND | O_WRONLY, 0644);
+			cmd->output = open(cmd->cmd[0], O_CREAT | \
+			O_APPEND | O_WRONLY, 0644);
 		cmd->red = cmd->red->next;
 	}
 }

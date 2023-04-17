@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:01:47 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/03/30 16:43:41 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/17 11:33:24 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_strlen(const char *str)
 
 	i = -1;
 	if (!str)
-		return 0;
+		return (0);
 	while (str[++i])
 		;
 	return (i);
@@ -29,7 +29,7 @@ int	ft_strcmp(const char *s1, const char *s2)
 	int	i;
 
 	i = -1;
-	if (!s1 )
+	if (!s1)
 		return (0);
 	while ((s1[++i] && s2[i]) && (s1[i] == s2[i]))
 		;

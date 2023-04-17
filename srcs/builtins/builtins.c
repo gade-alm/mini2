@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 17:02:48 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/13 11:29:51 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/17 11:37:22 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	cd(t_cmd *cmd, char **env)
 	change_pwd();
 	return (0);
 }
-
 
 int	env(t_cmd *cmd, char **env, int output)
 {
@@ -93,11 +92,10 @@ int	unset(t_cmd *cmd)
 		if (ft_strncmp(cmd->cmd[1], this()->env[i], \
 		ft_strlen(cmd->cmd[1])) == 0)
 		{
-			this()->env = rm_var(cmd->cmd[1], \
-			this()->env, ft_strlen(cmd->cmd[1]));
-			return (1);	
+			(this())->env = rm_var(cmd->cmd[1], \
+			(this())->env, ft_strlen(cmd->cmd[1]));
+			return (1);
 		}
 	}
 	return (0);
 }
-

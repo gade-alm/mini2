@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 08:21:06 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/16 13:32:38 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/04/17 11:07:32 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include "env.h"
 # include "allocation.h"
 # include "builtins.h"
+# include "minishell.h"
 # include "struct.h"
 # include "lists.h"
 
