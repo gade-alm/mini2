@@ -6,7 +6,7 @@
 #    By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/25 10:52:52 by gabriel           #+#    #+#              #
-#    Updated: 2023/04/13 12:51:16 by gade-alm         ###   ########.fr        #
+#    Updated: 2023/04/17 12:02:46 by gade-alm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,11 +60,11 @@ RM 			= rm -rf
 all: $(NAME)
 
 $(NAME):	$(OBJS)
-		$(CC) $(CFLAGS) $(LIBS) $(OBJS) -lreadline -o $(NAME)
+		@$(CC) $(CFLAGS) $(LIBS) $(OBJS) -lreadline -o $(NAME)
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
-			mkdir -p $(@D)
-			$(CC) $(CFLAGS) -c $< -o $@
+			@mkdir -p $(@D)
+			@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS_DIR) a.out

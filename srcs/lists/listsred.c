@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   listsred.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 08:28:28 by grebin            #+#    #+#             */
-/*   Updated: 2023/03/21 15:33:42 by grebin           ###   ########.fr       */
+/*   Updated: 2023/04/17 12:56:06 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ t_red	*addred(t_red **list, t_red *new)
 	return (new);
 }
 
-void rmred(t_red **red, int list)
+void	rmred(t_red **red, int list)
 {
 	int		i;
 	t_red	*temp;
-	
-	i  = 0;
+
+	i = 0;
 	while (*red && i == 0)
 	{
 		temp = *red;

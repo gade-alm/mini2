@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 17:03:51 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/03/29 15:52:59 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/17 12:51:09 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,13 @@ int	check_string(char *str)
 	{
 		if (str[i] == '\'')
 		{
-		i = check_single_quote(str, i);
+			i = check_single_quote(str, i);
 			if (!i)
 				return (0);
 		}
-		if (str[i] == '\"')
+		if (str[i] == '"')
 		{
-		i = check_double_quote(str, i);
+			i = check_double_quote(str, i);
 			if (!i)
 				return (0);
 		}
@@ -84,16 +84,82 @@ int	check_string(char *str)
 			if (!i)
 				return (0);
 		}
+	}
+	if (check_strings_2(str))
+		return (1);
+	return (0);
+}
+
+int	check_strings_2(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+	{
 		if (str[i] == '>')
 		{
-			while (str[i++] == ' ' || str[i] == '\t')
+			while (str[++i] == ' ' || str[i] == '\t')
 				;
 			if (!str[i])
 			{
-				printf("Error on Redir\n");
+				printf("Error on >\n");
+				return (0);
+			}
+		}
+		if (str[i] == '<' && str[i + 1] == '<')
+		{
+			while (str[++i] == ' ' || str[i] == '\t')
+				;
+			if (!str[i])
+			{
+				printf("Error on <<\n");
 				return (0);
 			}
 		}
 	}
-	return (i);
+	return (1);
 }
+
+// int	check_string(char *str)
+// {
+// 	int	i;
+
+// 	i = -1;
+// 	while (str[++i])
+// 	{
+// 		if (str[i] == '\'')
+// 		{
+// 		i = check_single_quote(str, i);
+// 			if (!i)
+// 				return (0);
+// 		}
+// 		if (str[i] == '\"')
+// 		{
+// 		i = check_double_quote(str, i);
+// 			if (!i)
+// 				return (0);
+// 		}
+		// if (str[i] == '|')
+		// {
+		// 	i = check_pipe(str, i);
+		// 	if (!i)
+		// 		return (0);
+		// }
+// 		if (str[i] == '>')
+// 		{
+// 			while (str[i++] == ' ' || str[i] == '\t')
+// 				;
+// 			if (!str[i])
+// 			{
+// 				printf("Error on Redir\n");
+// 				return (0);
+// 			}
+// 		}
+// 		if (str[i] == '<' && str[i + 1] == '<')
+// 		{
+			
+// 		}
+// 	}
+// 	return (i);
+// }

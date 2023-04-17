@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipes.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:49:43 by grebin            #+#    #+#             */
-/*   Updated: 2023/02/15 11:56:34 by grebin           ###   ########.fr       */
+/*   Updated: 2023/04/17 12:56:31 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	pipe_handler(t_cmd *first, t_cmd *second)
 {
-	int fd[2];
+	int	fd[2];
 
 	if (pipe(fd) == -1)
 		return (prints("minishell: pipe error", 2, NULL));

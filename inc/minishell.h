@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:53:03 by gabriel           #+#    #+#             */
-/*   Updated: 2023/04/16 14:26:16 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/04/17 12:35:28 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ char	**ft_split(char *str);
 int		check_single_quote(char *str, int i);
 int		check_double_quote(char *str, int i);
 int		check_string(char *str);
+int		check_strings_2(char *str);
 int		check_pipe(char *str, int i);
 int		check_redirection(char *str, int i, char c);
 int		token_helper(char *str, char c, int i);

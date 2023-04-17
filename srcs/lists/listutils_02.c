@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   listutils_02.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:13:43 by hcoutinh          #+#    #+#             */
-/*   Updated: 2023/04/04 17:47:24 by grebin           ###   ########.fr       */
+/*   Updated: 2023/04/17 12:56:19 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_cmd	*selectnode(t_cmd *list, int n)
 void	printlist(t_cmd *list)
 {
 	int	i;
-	int j;
+	int	j;
 
 	j = 0;
 	while (list)
@@ -69,7 +69,7 @@ t_cmd	*listcall(void)
 
 // Retturn node index
 
-int lstindex(t_cmd *arg, t_cmd *list)
+int	lstindex(t_cmd *arg, t_cmd *list)
 {
 	int	i;
 
@@ -77,7 +77,7 @@ int lstindex(t_cmd *arg, t_cmd *list)
 	while (list)
 	{
 		if (arg == list)
-			break;
+			break ;
 		list = list->next;
 		i++;
 	}
