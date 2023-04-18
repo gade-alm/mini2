@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:38:11 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/16 15:39:06 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/04/18 07:35:04 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	red_handler(int i, char *file, int ncmd)
 	{
 		if (selectnode(this()->cmds, ncmd)->input != 0)
 			close(selectnode(this()->cmds, ncmd)->input);
-		selectnode(this()->cmds, ncmd)->input = open(file, O_RDONLY);
+		(selectnode)((this())->cmds, ncmd)->input = open(file, O_RDONLY);
 	}
 	if (i == 2)
 	{	
