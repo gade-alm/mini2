@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:44:03 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/04/16 15:37:24 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/04/18 11:29:41 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ char	**handle_commands(char *str, char **env, int i)
 			}
 		}
 		split[i] = remove_quotes(split[i], -1, 0);
+		printf("%s\n", split[i]);
 	}
 	return (split);
 }
