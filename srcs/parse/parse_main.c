@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:38:11 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/18 12:03:57 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/04/19 10:34:34 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ int	check_path(t_cmd *cmd)
 	char *temp2;
 
 	temp = ft_strrchr(cmd->cmd[0], '/');
-	printf("Teste\n");
 	if (!temp)
 		return (1);
 	cmd->path = ft_strdup(cmd->cmd[0]);

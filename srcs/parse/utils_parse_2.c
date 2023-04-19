@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parse_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 17:03:51 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/04/18 12:20:01 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/04/19 10:30:55 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	check_string(char *str)
 				return (0);
 		}
 	}
-	if (check_strings_2(str))
+	if (check_strings_2(str) == 1)
 		return (1);
 	return (0);
 }
@@ -75,8 +75,7 @@ int	check_redir(char *str, int i)
 
 int	check_heredocs(char *str, int i)
 {
-	i++;
-	printf("TESTE %i %c",i, str[i]);
+	i += 2;
 	while (str[i] == ' ' || str[i] == '\t')
 		i++;
 	if (!str[i])
@@ -105,7 +104,7 @@ int	check_strings_2(char *str)
 			i = check_heredocs(str, i);
 			if (!i)
 			{
-				printf("Error on <<\n");
+				printf("zsh: parse error near '\\n'\n");
 				return (0);
 			}
 		}
