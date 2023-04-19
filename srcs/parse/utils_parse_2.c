@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 17:03:51 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/04/19 10:30:55 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/19 10:50:33 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	check_strings_2(char *str)
 		if (str[i] == '>')
 		{
 			i = check_redir(str, i);
-			if (i == 0)
+			if (!i)
 			{
 				printf("Error on >\n");
 				return (0);

@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:38:11 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/19 10:34:34 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/19 11:29:04 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ void	red_handler(int i, char *file, int ncmd)
 	{
 		if (selectnode(this()->cmds, ncmd)->output != 1)
 			close(selectnode(this()->cmds, ncmd)->output);
-		selectnode(this()->cmds, ncmd)->output = open(file, O_CREAT, O_TRUNC, 0644);
+		selectnode(this()->cmds, ncmd)->output = open(file, O_CREAT | O_TRUNC, 0644);
 	}
 	if (i == 4)
 	{
 		if (selectnode(this()->cmds, ncmd)->output != 1)
 			close(selectnode(this()->cmds, ncmd)->output);
-		selectnode(this()->cmds, ncmd)->output = open(file, O_CREAT, O_APPEND, 0644);
+		selectnode(this()->cmds, ncmd)->output = open(file, O_CREAT | O_APPEND, 0644);
 	}
 }
 
@@ -102,6 +102,11 @@ int	check_path(t_cmd *cmd)
 	char *temp;
 	char *temp2;
 
+	if (!cmd->cmd)
+	{
+		rmnode(&this()->cmds);
+		return (0);
+	}
 	temp = ft_strrchr(cmd->cmd[0], '/');
 	if (!temp)
 		return (1);
@@ -132,10 +137,14 @@ void cmds_split(char **arg)
 	temp = this()->cmds;
 	while (temp)
 	{
-		check_path(temp);
-		temp = temp->next;
+		if (check_path(temp))
+			temp = temp->next;
+		else
+			break ;
 	}
 	//printlist(this()->cmds);
 	if (arg)
 		free_matrix(arg);
 }
+
+// Linha 105 - 109 adicionadas e if 140 else 142-143 adicionados para evitar erro do "> a"
