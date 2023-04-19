@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 08:20:18 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/19 10:57:18 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/19 12:18:40 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,22 @@ void	executor(t_cmd *cmd)
 {
 	while (this()->cmds)
 	{
+		if (!this()->cmds->cmd)
+		{
+			if (this()->cmds->output != 1)
+				close(this()->cmds->output);
+			if (this()->cmds->input != 0)
+				close(this()->cmds->input);
+			rmnode(&this()->cmds);
+			if (!this()->cmds)
+				break ;
+		}
 		if (is_builtin() && this()->cmdsindex == 1)
 		{
 			builtins(cmd);
 			return ;
 		}
-		// this()->cmds->pid = fork();
+		this()->cmds->pid = fork();
 		if (this()->cmds->pid == -1)
 			prints("Error creating second fork", 2, this()->cmds->cmd[0]);
 		if (this()->cmds->pid == 0)

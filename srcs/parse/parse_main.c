@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:38:11 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/19 11:34:05 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/19 12:08:02 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,8 @@ int	check_path(t_cmd *cmd)
 	char *temp;
 	char *temp2;
 
-	if (!cmd->cmd)
-	{
-		rmnode(&this()->cmds);
+	if (!cmd->cmd || !*cmd->cmd)
 		return (0);
-	}
 	temp = ft_strrchr(cmd->cmd[0], '/');
 	if (!temp)
 		return (1);
@@ -119,7 +116,7 @@ int	check_path(t_cmd *cmd)
 	temp2 = cmd->cmd[0];
 	cmd->cmd[0] = ft_strdup(temp + 1);
 	free(temp2);
-	return (0);
+	return (1);
 }
 
 void cmds_split(char **arg)
@@ -142,10 +139,8 @@ void cmds_split(char **arg)
 	temp = this()->cmds;
 	while (temp)
 	{
-		if (check_path(temp))
-			temp = temp->next;
-		else
-			break ;
+		check_path(temp);
+		temp = temp->next;
 	}
 	//printlist(this()->cmds);
 	if (arg)
