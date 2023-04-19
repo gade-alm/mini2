@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 17:03:51 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/04/19 10:50:33 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/19 11:52:16 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,6 @@ int	check_single_quote(char *str, int i, char quote)
 	return (0);
 }
 
-int	check_pipe(char *str, int i)
-{
-	if (str[i] && str[i + 1] == '|')
-	{
-		printf("Check Pipes\n");
-		return (0);
-	}
-	return (i);
-}
-
 int	check_string(char *str)
 {
 	int	i;
@@ -53,9 +43,11 @@ int	check_string(char *str)
 		}
 		if (str[i] == '|')
 		{
-			i = check_pipe(str, i);
-			if (!i)
+			if (str[i] && str[i + 1] == '|')
+			{
+				printf("Check Pipes\n");
 				return (0);
+			}
 		}
 	}
 	if (check_strings_2(str) == 1)
@@ -63,13 +55,16 @@ int	check_string(char *str)
 	return (0);
 }
 
-int	check_redir(char *str, int i)
+int	check_redir(char *str, int i, char redir)
 {
 	i++;
-	while (str[i] != '|' && (str[i] == ' ' || str[i] == '\t'))
-		i++;
-	if (str[i] == '|' || !str[i])
-		return (0);
+	if (redir == '>' || redir == '<')
+	{
+		while (str[i] != '|' && (str[i] == ' ' || str[i] == '\t'))
+			i++;
+		if (str[i] == '|' || !str[i])
+			return (0);
+	}
 	return (i);
 }
 
@@ -90,12 +85,12 @@ int	check_strings_2(char *str)
 	i = -1;
 	while (str[++i])
 	{
-		if (str[i] == '>')
+		if (str[i] == '>' || str[i] == '<')
 		{
-			i = check_redir(str, i);
+			i = check_redir(str, i, str[i]);
 			if (!i)
 			{
-				printf("Error on >\n");
+				printf("syntax error near unexpected token `newline'\n");
 				return (0);
 			}
 		}

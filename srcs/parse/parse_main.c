@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:38:11 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/19 11:29:04 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/19 11:34:05 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,11 @@ char **fill_cmd(char *next, int ncmd)
 
 int	set_cmd(char **arg, int i, int ncmd)
 {
+	if (!arg[i])
+	{
+		rmnode(&this()->cmds);
+		return (0);
+	}
 	while (arg && arg[i] && arg[i][0] != '|')
 	{
 		if((arg[i][0] == '<' || arg[i][0] == '>'))
