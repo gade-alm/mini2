@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 08:20:18 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/19 12:18:40 by grebin           ###   ########.fr       */
+/*   Updated: 2023/04/19 13:08:08 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/executor.h"
 
-void child_clean(t_cmd *cmd)
+void	child_clean(t_cmd *cmd)
 {
 	while (cmd)
 	{
@@ -38,7 +38,7 @@ void	builtins(t_cmd *cmd)
 		(this())->status = env(cmd, this()->env, cmd->output);
 	if (ft_strncmp("pwd", cmd->cmd[0], 4) == 0)
 		this()->status = pwd(cmd->output);
-	if (ft_strncmp("exit", cmd->cmd[0], 3) == 0)
+	if (ft_strncmp("exit", cmd->cmd[0], 5) == 0)
 		(this())->status = exit_prog(cmd, this()->status);
 	child_clean(this()->cmds);
 	rmnode(&this()->cmds);
@@ -116,11 +116,11 @@ void	executor(t_cmd *cmd)
 		{
 			if (is_builtin())
 			{
-				builtins(cmd);
+				builtins(this()->cmds);
 				exit(this()->status);
 			}
 			else
-				this()->status = cmd_handler(this()->env, this()->cmds->input, this()->cmds->output);
+				exit(this()->status = cmd_handler(this()->env, this()->cmds->input, this()->cmds->output));
 		}
 		if (this()->cmds->output != 1)
 			close(this()->cmds->output);
