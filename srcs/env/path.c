@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:59:59 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/11 12:14:52 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/20 10:32:14 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ char	*fusion_path(char *s1, char *s2)
 
 int	find_path(t_cmd *cmd, char *path)
 {
-	char *temp;
-	
+	char	*temp;
+
 	if (!path)
 		return (-1);
 	path += 5;
@@ -73,7 +73,7 @@ int	find_path(t_cmd *cmd, char *path)
 	return (0);
 }
 
-int set_path(t_cmd *cmd)
+int	set_path(t_cmd *cmd)
 {
 	if (cmd->path)
 	{

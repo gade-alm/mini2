@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:49:43 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/17 12:56:31 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/20 10:34:49 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,3 @@ int	pipe_handler(t_cmd *first, t_cmd *second)
 	else
 		close(fd[1]);
 }
-

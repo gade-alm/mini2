@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:52:38 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/17 11:22:11 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/20 10:33:15 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	heredocs(t_red *red)
 		arg = ft_strjoin(arg, temp1);
 		free(temp1);
 	}
-	//printf("%s", arg);
 	return (prep_heredocs(arg));
 }
 
@@ -68,5 +67,17 @@ void	prep_fd(t_cmd *cmd)
 			cmd->output = open(cmd->cmd[0], O_CREAT | \
 			O_APPEND | O_WRONLY, 0644);
 		cmd->red = cmd->red->next;
+	}
+}
+
+void	child_clean(t_cmd *cmd)
+{
+	while (cmd)
+	{
+		if (cmd->output != 1)
+			close(cmd->output);
+		if (cmd->input != 0)
+			close(cmd->input);
+		cmd = cmd->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:13:43 by hcoutinh          #+#    #+#             */
-/*   Updated: 2023/04/17 12:56:19 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/20 10:34:35 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ t_cmd	*listcall(void)
 
 	return (&list);
 }
-
 
 // Retturn node index
 

@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   sig_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 19:14:38 by gabriel           #+#    #+#             */
-/*   Updated: 2023/04/19 12:28:03 by grebin           ###   ########.fr       */
+/*   Updated: 2023/04/20 10:35:27 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-// The value of the exit is 128 + the signal value, SIGINT (ctrl+c) = 2 and SIGTSTOP (ctrl + \) = 3
+/* The value of the exit is 128 + the signal value, SIGINT
+(ctrl+c) = 2 and SIGTSTOP (ctrl + \) = 3*/
 void	sig_handler(int signal)
 {
 	if (signal == SIGQUIT)
