@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:48:52 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/17 11:36:58 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/20 14:11:28 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,17 @@ int	export(t_cmd *cmd, char **env)
 
 	i = -1;
 	if (!cmd->cmd[1])
-		return (1);
+		return (1); // print declare -x
 	temp = ft_strdup(cmd->cmd[1]);
-	if (!temp[i])
-		return (0);
+	if (!temp)
+		printerror("malloc error", 2);
 	while (temp[++i] != '=' && temp[i])
 		;
+	/* if (temp[i] != '=' || !ft_strlen(temp + i + 1))
+	{
+		free(temp);
+		return (0);
+	} */
 	if (check_var(temp, env, ++i))
 		(this())->env = change_var(temp, temp, env, i);
 	else

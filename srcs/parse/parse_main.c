@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:38:11 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/19 12:08:02 by grebin           ###   ########.fr       */
+/*   Updated: 2023/04/20 13:25:52 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	red_handler(int i, char *file, int ncmd)
 		(selectnode)((this())->cmds, ncmd)->input = open(file, O_RDONLY);
 	}
 	if (i == 2)
-	{	
+	{
 		if (selectnode(this()->cmds, ncmd)->input != 0)
 			close(selectnode(this()->cmds, ncmd)->input);
 		selectnode(this()->cmds, ncmd)->input = heredocs(file);
@@ -142,9 +142,7 @@ void cmds_split(char **arg)
 		check_path(temp);
 		temp = temp->next;
 	}
-	//printlist(this()->cmds);
+	printlist(this()->cmds);
 	if (arg)
 		free_matrix(arg);
 }
-
-// Linha 105 - 109 adicionadas e if 140 else 142-143 adicionados para evitar erro do "> a"

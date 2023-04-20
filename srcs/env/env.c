@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 16:25:24 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/03/16 17:04:22 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/20 14:44:52 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ char	**change_var(char *old, char *new, char **env, int limit)
 	return (env);
 }
 
-//ADD CHECKDUPE AFTER i=-1
 char	**add_var(char *line, char **env)
 {
 	int		i;
@@ -52,17 +51,10 @@ char	**add_var(char *line, char **env)
 	env = alloc_matrix(env, 1);
 	i = -1;
 	while (temp[++i])
-	{
-		env[i] = ft_strdup(temp[i]);
-		if (!env[i])
-		{
-			free(env);
-			return (NULL);
-		}
-	}
+		env[i] = temp[i];
 	env[i] = line;
 	env[++i] = NULL;
-	free_matrix(temp);
+	free(temp);
 	return (env);
 }
 
@@ -76,20 +68,20 @@ char	**rm_var(char *line, char **env, int limit)
 	temp = env;
 	env = alloc_matrix(env, -1);
 	if (!env)
-		return (NULL);
+		return (temp);
 	i = -1;
 	while (temp[++i])
 	{
 		if (ft_strncmp(line, temp[i], limit))
-			env[++j] = ft_strdup(temp[i]);
-		if (!env[j])
+			env[++j] = temp[i];
+		else
 		{
-			free(env);
-			return (NULL);
+			printf("%s\n", temp[i]);
+			free(temp[i]);
 		}
 	}
 	env[j] = NULL;
-	free_matrix(temp);
+	free(temp);
 	return (env);
 }
 

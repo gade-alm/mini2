@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 17:02:48 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/17 11:37:22 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/20 14:48:43 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	pwd(int output)
 }
 
 int	cd(t_cmd *cmd, char **env)
-{	
+{
 	if (!cmd->cmd[1])
 		return (1);
 	if (!check_var("PWD=", env, 4))
@@ -37,7 +37,7 @@ int	cd(t_cmd *cmd, char **env)
 	{
 		prints("too many arguments", 2, "exit");
 		return (1);
-	}	
+	}
 	if (chdir(cmd->cmd[1]))
 	{
 		perror("minishell: chdir");
@@ -71,7 +71,7 @@ int	echo(t_cmd *cmd, int output)
 	i = 0 + (ft_strncmp("-n", cmd->cmd[1], 3) == 0);
 	while (cmd->cmd[++i])
 	{
-		prints(cmd->cmd[i], output, NULL);
+		write(output, cmd->cmd[i], ft_strlen(cmd->cmd[i]));
 		if (cmd->cmd[i + 1])
 			write(output, " ", 1);
 	}
@@ -92,7 +92,7 @@ int	unset(t_cmd *cmd)
 		if (ft_strncmp(cmd->cmd[1], this()->env[i], \
 		ft_strlen(cmd->cmd[1])) == 0)
 		{
-			(this())->env = rm_var(cmd->cmd[1], \
+			this()->env = rm_var(cmd->cmd[1], \
 			(this())->env, ft_strlen(cmd->cmd[1]));
 			return (1);
 		}

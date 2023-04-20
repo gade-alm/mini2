@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 08:20:18 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/20 11:32:48 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:00:18 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,9 @@ void	executor(t_cmd *cmd)
 			close(this()->cmds->input);
 		rmnode(&this()->cmds);
 	}
-	while (this()->cmdsindex-- > 0)
+	while (this()->cmdsindex > 0)
+	{
 		wait(NULL);
+		this()->cmdsindex--;
+	}
 }
