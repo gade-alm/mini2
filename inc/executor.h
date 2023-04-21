@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 08:21:06 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/20 10:33:40 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:01:36 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@
 # include "minishell.h"
 # include "struct.h"
 # include "lists.h"
+
+//SO PRA FECHAR O FD
+typedef struct s_sig{
+	int		value[2];
+}t_sig;
 
 void	executor(t_cmd *cmd);
 void	builtins(t_cmd *cmd);

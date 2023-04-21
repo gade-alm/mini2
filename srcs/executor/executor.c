@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 08:20:18 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/20 13:00:18 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2023/04/21 10:06:56 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	cmd_handler(char **env, int input, int output)
 {
 	if (set_path(this()->cmds) == -1)
 	{
-		prints("Command not found", 2, this()->cmds->cmd[0]);
+		prints("Command not found:", 2, this()->cmds->cmd[0]);
 		return (127);
 	}
 	child_clean(this()->cmds->next);

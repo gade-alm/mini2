@@ -3,34 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   heredocs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:52:38 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/20 15:55:53 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/04/21 12:11:58 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/executor.h"
 
-void	heredocs_sig_handler(int signal)
+int	*check_fd(int *fd)
 {
-	int	fd;
+	static int	*ret;
 
-	if (signal == SIGQUIT)
-	{
-		this()->status = 131;
-		return ;
-	}
-	if (signal == SIGINT)
-	{
-		this()->status = 130;
-		printf("\n");
-		fd = 0;
-		if (fd != -1)
-			close(fd);
-		printf("Teste\n");
-	}
-	return ;
+	if (fd)
+		ret = fd;
+	return (ret);
 }
 
 char	*expand_var_loop(char *str)
@@ -52,16 +40,36 @@ char	*expand_var_loop(char *str)
 	return (str);
 }
 
+void	heredocs_sig_handler(int signal)
+{
+	int	fd;
+
+	fd = *check_fd(NULL);
+	if (signal == SIGQUIT)
+		return ;
+	if (signal == SIGINT)
+	{
+		fd = *check_fd(NULL);
+		printf("%i\n", fd);
+		if (fd != -1)
+			close(fd);
+		this()->status = 130;
+	}
+	return ;
+}
+
 int	heredocs(char *delim)
 {
-	char	*temp;
-	int		fd[2];
+	char		*temp;
+	int			fd[2];
 
 	signal(SIGINT, heredocs_sig_handler);
 	signal(SIGKILL, heredocs_sig_handler);
 	temp = NULL;
 	if (pipe(fd) == -1)
 		return (-1);
+	check_fd(fd);
+	printf("%i\n", fd[0]);
 	while (ft_strncmp(temp, delim, ft_strlen(temp)) != 0)
 	{
 		if (temp)
