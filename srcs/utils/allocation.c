@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   allocation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 16:22:25 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/17 12:56:47 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/24 08:33:44 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	**alloc_matrix(char **matrix, int change)
 		return (NULL);
 	while (matrix[++i])
 		;
-	new = malloc(sizeof(char *) * ((i + 1) + change));
+	new = malloc(sizeof(char *) * (i + 1 + change));
 	if (!new)
 		return (NULL);
 	return (new);

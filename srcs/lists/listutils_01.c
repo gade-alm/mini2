@@ -6,7 +6,7 @@
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 13:44:02 by hcoutinh          #+#    #+#             */
-/*   Updated: 2023/03/23 10:54:50 by grebin           ###   ########.fr       */
+/*   Updated: 2023/04/27 16:04:44 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	rmnode(t_cmd **list)
 {
 	t_cmd	*temp;
 	int		i;
+
 
 	temp = selectnode(*list, 0);
 	if (!temp)

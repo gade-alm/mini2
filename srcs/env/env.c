@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 16:25:24 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/04/20 14:44:52 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2023/04/24 08:28:49 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,7 @@ char	**rm_var(char *line, char **env, int limit)
 		if (ft_strncmp(line, temp[i], limit))
 			env[++j] = temp[i];
 		else
-		{
-			printf("%s\n", temp[i]);
 			free(temp[i]);
-		}
 	}
 	env[j] = NULL;
 	free(temp);

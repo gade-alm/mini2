@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 17:02:48 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/20 14:48:43 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2023/04/27 16:08:01 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	pwd(int output)
 int	cd(t_cmd *cmd, char **env)
 {
 	if (!cmd->cmd[1])
-		return (1);
+		if (cd_home(this()->env, cmd))
+			return (1);
 	if (!check_var("PWD=", env, 4))
 		add_pwd();
 	if (cmd->cmd[2])

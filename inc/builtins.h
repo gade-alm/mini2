@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 17:07:54 by grebin            #+#    #+#             */
-/*   Updated: 2023/03/17 12:17:29 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/27 15:30:43 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ int		cd(t_cmd *cmd, char **env);
 void	change_pwd(void);
 int		add_pwd(void);
 int		exit_prog(t_cmd *cmd, int status);
+
+int		cd_home(char **env, t_cmd *node);
 
 #endif

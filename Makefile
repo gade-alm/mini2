@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+         #
+#    By: grebin <grebin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/25 10:52:52 by gabriel           #+#    #+#              #
-#    Updated: 2023/04/17 12:02:46 by gade-alm         ###   ########.fr        #
+#    Updated: 2023/04/27 15:31:37 by grebin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS		= $(SRCS_DIR)/main.c \
 			$(SRCS_DIR)/utils/struct.c \
 			$(SRCS_DIR)/builtins/builtins.c \
 			$(SRCS_DIR)/builtins/builtins1.c \
+			$(SRCS_DIR)/builtins/utils.c \
 			$(SRCS_DIR)/lists/listutils_01.c \
 			$(SRCS_DIR)/lists/listutils_02.c \
 			$(SRCS_DIR)/lists/listsred.c \
