@@ -6,7 +6,7 @@
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 16:25:24 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/04/24 08:28:49 by grebin           ###   ########.fr       */
+/*   Updated: 2023/04/27 17:27:06 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char	**rm_var(char *line, char **env, int limit)
 		else
 			free(temp[i]);
 	}
-	env[j] = NULL;
+	env[++j] = NULL;
 	free(temp);
 	return (env);
 }

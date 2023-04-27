@@ -6,7 +6,7 @@
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:48:52 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/24 08:31:36 by grebin           ###   ########.fr       */
+/*   Updated: 2023/04/27 16:53:17 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	export(t_cmd *cmd, char **env)
 
 	i = -1;
 	if (!cmd->cmd[1])
-		return (1); // print declare -x
+		return(print_export(env));
 	temp = ft_strdup(cmd->cmd[1]);
 	if (!temp)
 		printerror("malloc error", 2);

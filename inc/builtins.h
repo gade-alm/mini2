@@ -6,7 +6,7 @@
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 17:07:54 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/27 15:30:43 by grebin           ###   ########.fr       */
+/*   Updated: 2023/04/27 16:52:59 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int		add_pwd(void);
 int		exit_prog(t_cmd *cmd, int status);
 
 int		cd_home(char **env, t_cmd *node);
+int	print_export(char **env);
 
 #endif

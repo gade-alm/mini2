@@ -6,11 +6,22 @@
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 15:21:40 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/27 16:07:00 by grebin           ###   ########.fr       */
+/*   Updated: 2023/04/27 16:52:53 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/builtins.h"
+
+
+int	print_export(char **env)
+{
+	int i;
+
+	i = -1;
+		while (env[++i])
+			printf("declare -x %s\n", env[i]);
+	return (1);
+}
 
 char	*get_home(char **env)
 {
