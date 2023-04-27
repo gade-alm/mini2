@@ -6,7 +6,7 @@
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 08:20:18 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/27 17:22:03 by grebin           ###   ########.fr       */
+/*   Updated: 2023/04/27 17:44:18 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,19 @@ void	child_clean(t_cmd *cmd)
 
 void	builtins(t_cmd *cmd)
 {
-	if (ft_strncmp("cd", cmd->cmd[0], 3) == 0)
+	if (ft_strncmp("cd", cmd->path, 3) == 0)
 		(this())->status = cd(cmd, this()->env);
-	else if (ft_strncmp("echo", cmd->cmd[0], 5) == 0)
+	else if (ft_strncmp("echo", cmd->path, 5) == 0)
 		(this())->status = echo(cmd, cmd->output);
-	else if (ft_strncmp("unset", cmd->cmd[0], 6) == 0)
+	else if (ft_strncmp("unset", cmd->path, 6) == 0)
 		(this())->status = unset(cmd);
-	else if (ft_strncmp("export", cmd->cmd[0], 7) == 0)
+	else if (ft_strncmp("export", cmd->path, 7) == 0)
 		(this())->status = export(cmd, this()->env);
-	else if (ft_strncmp("env", cmd->cmd[0], 4) == 0)
+	else if (ft_strncmp("env", cmd->path, 4) == 0)
 		(this())->status = env(cmd, this()->env, cmd->output);
-	else if (ft_strncmp("pwd", cmd->cmd[0], 4) == 0)
+	else if (ft_strncmp("pwd", cmd->path, 4) == 0)
 		this()->status = pwd(cmd->output);
-	else if (ft_strncmp("exit", cmd->cmd[0], 5) == 0)
+	else if (ft_strncmp("exit", cmd->path, 5) == 0)
 		(this())->status = exit_prog(cmd, this()->status);
 	child_clean(this()->cmds);
 	rmnode(&this()->cmds);

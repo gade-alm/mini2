@@ -6,7 +6,7 @@
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:13:25 by gabriel           #+#    #+#             */
-/*   Updated: 2023/04/27 17:31:07 by grebin           ###   ########.fr       */
+/*   Updated: 2023/04/27 17:44:28 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(int ac, char **av, char **envp)
 			{
 				cmds_split(handle_commands(str, this()->env, -1));
 				executor(this()->cmds);
+				printlist(this()->cmds);
 			}
 		}
 		else if (!str)

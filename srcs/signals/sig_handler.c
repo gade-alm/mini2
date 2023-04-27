@@ -6,7 +6,7 @@
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 19:14:38 by gabriel           #+#    #+#             */
-/*   Updated: 2023/04/27 17:31:05 by grebin           ###   ########.fr       */
+/*   Updated: 2023/04/27 17:44:25 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,5 @@ void	sig_handler(int signal)
 		rl_redisplay();
 	}
 	return ;
-}
+}	
+
