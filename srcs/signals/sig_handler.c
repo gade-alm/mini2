@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 19:14:38 by gabriel           #+#    #+#             */
-/*   Updated: 2023/04/28 11:14:54 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/28 11:58:30 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	sig_handler(int signal)
 		this()->status = 131;
 		return ;
 	}
-	if (signal == SIGINT)
+	if (signal == SIGINT && !this()->cmdsindex)
 	{
 		this()->status = 130;
 		rl_replace_line("", 0);
