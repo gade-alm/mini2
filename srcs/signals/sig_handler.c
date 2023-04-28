@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sig_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 19:14:38 by gabriel           #+#    #+#             */
-/*   Updated: 2023/04/27 17:44:25 by grebin           ###   ########.fr       */
+/*   Updated: 2023/04/28 11:14:54 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@ void	sig_handler(int signal)
 	if (signal == SIGINT)
 	{
 		this()->status = 130;
-		printf("\n");
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
 	}
 	return ;
-}	
-
+}

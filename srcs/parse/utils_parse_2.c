@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 17:03:51 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/04/21 10:39:40 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/28 10:36:59 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,9 @@ int	check_redir(char *str, int i, char redir)
 {
 	int	counter;
 
-	if ((str[i] == '<' && str[i + 1] != str[i]) || \
-	(str[i] == '>' && str[i + 1] != str[i]))
+	if (str[i] == '<' && str[i + 1] != str[i])
+		return (0);
+	if (str[i] == '>' && str[i + 1] == '<')
 		return (0);
 	i++;
 	counter = 0;

@@ -6,19 +6,17 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:52:38 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/21 12:11:58 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/04/28 11:15:14 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/executor.h"
 
-int	*check_fd(int *fd)
+t_sig	*sigcall(void)
 {
-	static int	*ret;
+	static t_sig	sig;
 
-	if (fd)
-		ret = fd;
-	return (ret);
+	return (&sig);
 }
 
 char	*expand_var_loop(char *str)
@@ -42,18 +40,15 @@ char	*expand_var_loop(char *str)
 
 void	heredocs_sig_handler(int signal)
 {
-	int	fd;
-
-	fd = *check_fd(NULL);
-	if (signal == SIGQUIT)
-		return ;
 	if (signal == SIGINT)
 	{
-		fd = *check_fd(NULL);
-		printf("%i\n", fd);
-		if (fd != -1)
-			close(fd);
-		this()->status = 130;
+		printf("%i\n", sigcall()->value[1]);
+		if (sigcall()->value[1] != -1)
+		{
+			close(sigcall()->value[1]);
+			printf("TESTE\n");
+			this()->status = 130;
+		}
 	}
 	return ;
 }
@@ -61,27 +56,25 @@ void	heredocs_sig_handler(int signal)
 int	heredocs(char *delim)
 {
 	char		*temp;
-	int			fd[2];
 
 	signal(SIGINT, heredocs_sig_handler);
-	signal(SIGKILL, heredocs_sig_handler);
+	signal(SIGQUIT, heredocs_sig_handler);
 	temp = NULL;
-	if (pipe(fd) == -1)
+	if (pipe(sigcall()->value) == -1)
 		return (-1);
-	check_fd(fd);
-	printf("%i\n", fd[0]);
+	printf("%i\n", sigcall()->value[1]);
 	while (ft_strncmp(temp, delim, ft_strlen(temp)) != 0)
 	{
 		if (temp)
 		{
 			temp = expand_var_loop(temp);
-			prints(temp, fd[1], NULL);
+			prints(temp, sigcall()->value[1], NULL);
 			free(temp);
 		}
 		temp = readline("<<: ");
 	}
 	if (temp)
 		free(temp);
-	close(fd[1]);
-	return (fd[0]);
+	close(sigcall()->value[1]);
+	return (sigcall()->value[0]);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:13:25 by gabriel           #+#    #+#             */
-/*   Updated: 2023/04/27 17:44:28 by grebin           ###   ########.fr       */
+/*   Updated: 2023/04/28 10:43:10 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int ac, char **av, char **envp)
 	(void)ac;
 	(void)av;
 	signal(SIGINT, sig_handler);
-	signal(SIGKILL, sig_handler);
+	signal(SIGQUIT, sig_handler);
 	this()->env = create_env(envp);
 	while (1)
 	{
@@ -33,7 +33,6 @@ int	main(int ac, char **av, char **envp)
 			{
 				cmds_split(handle_commands(str, this()->env, -1));
 				executor(this()->cmds);
-				printlist(this()->cmds);
 			}
 		}
 		else if (!str)

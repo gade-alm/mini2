@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:38:11 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/27 17:41:20 by grebin           ###   ########.fr       */
+/*   Updated: 2023/04/28 11:01:55 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ void cmds_split(char **arg)
 
 	ncmd = 0;
 	i = 0;
+	this()->cmdsindex = 0;
 	while (arg && arg[i])
 	{
 		addtolast(&this()->cmds, createnode(NULL));
@@ -142,7 +143,6 @@ void cmds_split(char **arg)
 		check_path(temp);
 		temp = temp->next;
 	}
-	printlist(this()->cmds);
 	if (arg)
 		free_matrix(arg);
 }
