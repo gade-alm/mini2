@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   strings1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 13:39:06 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/11 12:16:15 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/03 12:38:10 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,31 @@
 
 long	ft_atoi(char *s)
 {
-	long	n;
-	long	sig;
-	int		i;
+	int			i;
+	int			signal;
+	long long	conv;
 
-	n = 0;
-	i = -1;
-	sig = 1;
-	while (s[++i] > 8 && s[i] < 13)
-		;
-	if (s[i] == '-' || s[i] == '+')
+	i = 0;
+	signal = 1;
+	conv = 0;
+	while (s[i] == 32 || (s[i] > 8 && s[i] < 14))
+		i++;
+	if (s [i] == '-' || s[i] == '+')
 	{
-		sig = (s[i] != '-') - (s[i] == '-');
+		if (s[i] == '-')
+			signal *= -1;
 		i++;
 	}
-	while (s[++i] >= '0' && s[i] <= '9')
-		n = n * 10 + sig * (s[i++] - '0');
-	while (s[i] > 8 && s[i] < 13)
-		i++;
-	return (n);
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		conv = (conv * 10 + (signal * (s[i] - '0')));
+			i++;
+		if (conv > 2147483647)
+			return (-1);
+		if (conv < -2147483648)
+			return (0);
+	}
+	return (conv);
 }
 
 static int	ft_numdig(int n)
