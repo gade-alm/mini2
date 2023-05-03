@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 08:21:06 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/27 15:59:34 by grebin           ###   ########.fr       */
+/*   Updated: 2023/05/03 10:44:18 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@
 //SO PRA FECHAR O FD
 typedef struct s_sig{
 	int		value[2];
+	int		check;
 }t_sig;
 
+t_sig	*sigcall(void);
 void	executor(t_cmd *cmd);
 void	builtins(t_cmd *cmd);
 void	prep_fd(t_cmd *cmd);

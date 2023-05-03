@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:38:11 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/02 11:37:48 by grebin           ###   ########.fr       */
+/*   Updated: 2023/05/03 10:40:33 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,7 @@ int	check_path(t_cmd *cmd)
 		return (0);
 	temp = ft_strrchr(cmd->cmd[0], '/');
 	if (!temp)
-	{
-		cmd->path = ft_strdup(cmd->cmd[0]);
 		return (1);
-	}
 	cmd->path = ft_strdup(cmd->cmd[0]);
 	temp2 = cmd->cmd[0];
 	cmd->cmd[0] = ft_strdup(temp + 1);
@@ -148,5 +145,5 @@ void cmds_split(char **arg)
 	}
 	if (arg)
 		free_matrix(arg);
-	printlist(this()->cmds);
+	// printlist(this()->cmds);
 }

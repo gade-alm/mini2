@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sig_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 19:14:38 by gabriel           #+#    #+#             */
-/*   Updated: 2023/05/02 11:38:00 by grebin           ###   ########.fr       */
+/*   Updated: 2023/05/03 10:56:44 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,8 @@
 void	sig_handler(int signal)
 {
 	if (signal == SIGQUIT)
-	{
-		this()->status = 131;
 		return ;
-	}
-	if (signal == SIGINT && !this()->cmdsindex)
+	if (signal == SIGINT && sigcall()->check == 1)
 	{
 		this()->status = 130;
 		rl_replace_line("", 0);
