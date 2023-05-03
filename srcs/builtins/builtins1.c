@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:48:52 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/03 12:01:06 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/03 12:12:11 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	export(t_cmd *cmd, char **env)
 
 	i = -1;
 	if (!cmd->cmd[1])
-		return(print_export(env));
+		return (print_export(env));
 	temp = ft_strdup(cmd->cmd[1]);
 	if (!temp)
 		printerror("malloc error", 2);

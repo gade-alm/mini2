@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:52:38 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/03 10:57:27 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/03 12:23:00 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,19 @@ char	*expand_var_loop(char *str)
 		}
 	}
 	return (str);
+}
+
+void	heredocs_ctrl_d(char *temp, char *delim)
+{
+	(void)delim;
+	if (temp)
+		return ;
+	if (sigcall()->value[1] != -1)
+		close (sigcall()->value[1]);
+	printf("bash: warning(wanted %s)\n", delim);
+	rl_clear_history();
+	free (temp);
+	exit(this()->status);
 }
 
 void	heredocs_sig_handler(int signal)
@@ -70,6 +83,8 @@ void	forks_heredocs(char *temp, char *delim)
 			free(temp);
 		}
 		temp = readline("<<: ");
+		if (!temp)
+			heredocs_ctrl_d(temp, delim);
 	}
 	if (temp)
 		free(temp);
