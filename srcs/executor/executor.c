@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 08:20:18 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/03 10:35:39 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/03 11:30:34 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ int	is_builtin(void)
 
 void	executor(t_cmd *cmd)
 {
-	// printlist(this()->cmds);
 	while (this()->cmds)
 	{
 		if (!this()->cmds->cmd)
@@ -107,7 +106,6 @@ void	executor(t_cmd *cmd)
 			if (!this()->cmds)
 				break ;
 		}
-		printf("%i\n", this()->cmdsindex);
 		if (is_builtin() && this()->cmdsindex == 1)
 		{
 			builtins(cmd);
