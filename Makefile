@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+         #
+#    By: grebin <grebin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/25 10:52:52 by gabriel           #+#    #+#              #
-#    Updated: 2023/05/04 12:40:06 by gade-alm         ###   ########.fr        #
+#    Updated: 2023/05/04 15:46:44 by grebin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS		= $(SRCS_DIR)/main.c \
 			$(SRCS_DIR)/parse/utils_parse_2.c \
 			$(SRCS_DIR)/parse/handle_cmd.c \
 			$(SRCS_DIR)/parse/parse_main.c \
+			$(SRCS_DIR)/parse/parse_main_utils.c \
 			$(SRCS_DIR)/exp/expander.c \
 			$(SRCS_DIR)/exp/exp_utils.c \
 			$(SRCS_DIR)/exp/remove_quotes.c \
@@ -27,6 +28,7 @@ SRCS		= $(SRCS_DIR)/main.c \
 			$(SRCS_DIR)/env/path.c \
 			$(SRCS_DIR)/executor/executor.c \
 			$(SRCS_DIR)/executor/heredocs.c \
+			$(SRCS_DIR)/executor/exec_utils.c \
 			$(SRCS_DIR)/executor/signals.c \
 			$(SRCS_DIR)/utils/struct.c \
 			$(SRCS_DIR)/builtins/builtins.c \
@@ -34,7 +36,6 @@ SRCS		= $(SRCS_DIR)/main.c \
 			$(SRCS_DIR)/builtins/utils.c \
 			$(SRCS_DIR)/lists/listutils_01.c \
 			$(SRCS_DIR)/lists/listutils_02.c \
-			$(SRCS_DIR)/lists/listsred.c \
 
 SRCS_DIR	= srcs
 

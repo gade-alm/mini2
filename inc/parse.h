@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 11:52:53 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/05/04 10:19:40 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:49:00 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ int		check_heredocs(char *str, int i);
 int		token_len(char *str);
 char	**handle_commands(char *str, char **envp, int i);
 void	cmds_split(char **arg);
+void	red_handler(int i, char *file, int ncmd);
 
 #endif

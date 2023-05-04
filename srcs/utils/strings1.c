@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   strings1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 13:39:06 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/04 11:50:57 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/04 14:44:22 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ long	ft_atoi(char *s)
 	int		i;
 
 	n = 0;
-	i = -1;
+	i = 0;
 	sig = 1;
-	while (isspace(s[++i]))
-		;
+	while (s[i] == 32 || (s[i] > 8 && s[i] < 14))
+		i++;
 	if (s[i] == '-' || s[i] == '+')
 	{
 		sig = (s[i] != '-') - (s[i] == '-');
@@ -30,7 +30,7 @@ long	ft_atoi(char *s)
 	}
 	while (s[i] >= '0' && s[i] <= '9')
 		n = n * 10 + sig * (s[i++] - '0');
-	while (isspace(s[i]))
+	while (s[i] == 32 || (s[i] > 8 && s[i] < 14))
 		i++;
 	return (n);
 }

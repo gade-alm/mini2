@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 08:21:06 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/04 12:40:14 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:34:43 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,8 @@ void	heredocs_ctrl_d(char *temp, char *delim);
 void	child_clean(t_cmd *cmd);
 void	prep_fd(t_cmd *cmd);
 int		heredocs(char *delim);
+
+int		is_builtin(void);
+int		cmd_handler(char **env, int input, int output);
 
 #endif

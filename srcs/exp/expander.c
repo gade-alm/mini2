@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 10:12:13 by gabriel           #+#    #+#             */
-/*   Updated: 2023/05/03 11:55:15 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:13:45 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ char	*env_value(char *key, char **env, char *str, int x)
 	int		len;
 
 	i = -1;
-	printf("%i\n", this()->status);
 	if (str[x + 1] == '?' && (!ft_strncmp("status", key, 7)))
 		return (ft_itoa(this()->status));
 	while (env[++i] && !verify_var(key, env[i]))

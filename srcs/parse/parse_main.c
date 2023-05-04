@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:38:11 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/04 12:50:27 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:45:03 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,35 +27,6 @@ int	pipe_handler(t_cmd *first, t_cmd *second)
 	else
 		close(fd[0]);
 	return (0);
-}
-
-void	red_handler(int i, char *file, int ncmd)
-{
-	if (i == 1)
-	{
-		if (selectnode(this()->cmds, ncmd)->input != 0)
-			close(selectnode(this()->cmds, ncmd)->input);
-		(selectnode)((this())->cmds, ncmd)->input = open(file, O_RDONLY);
-	}
-	if (i == 2)
-	{
-		if (selectnode(this()->cmds, ncmd)->input != 0)
-			close(selectnode(this()->cmds, ncmd)->input);
-		(selectnode)(this()->cmds, ncmd)->input = heredocs(file);
-	}
-	if (i == 3)
-	{
-		if (selectnode(this()->cmds, ncmd)->output != 1)
-			close(selectnode(this()->cmds, ncmd)->output);
-		(selectnode)(this()->cmds, ncmd)->output = \
-		open(file, O_CREAT | O_TRUNC, 0644);
-	}
-	if (i == 4)
-	{
-		if (selectnode(this()->cmds, ncmd)->output != 1)
-			close(selectnode(this()->cmds, ncmd)->output);
-		(selectnode)(this()->cmds, ncmd)->output = open(file, O_CREAT | O_APPEND, 0644);
-	}
 }
 
 char	**fill_cmd(char *next, int ncmd)

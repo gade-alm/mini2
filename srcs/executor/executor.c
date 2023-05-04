@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 08:20:18 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/03 11:30:34 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:33:58 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	is_builtin(void)
 	ft_strncmp("env", this()->cmds->cmd[0], 4) == 0);
 }
 
-void	executor(t_cmd *cmd)
+/* void	executor(t_cmd *cmd)
 {
 	while (this()->cmds)
 	{
@@ -135,4 +135,4 @@ void	executor(t_cmd *cmd)
 		this()->cmdsindex--;
 		wait(NULL);
 	}
-}
+} */
