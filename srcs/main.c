@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:13:25 by gabriel           #+#    #+#             */
-/*   Updated: 2023/05/04 15:51:38 by grebin           ###   ########.fr       */
+/*   Updated: 2023/05/04 16:38:21 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,17 @@ static void	sig_handler(int signal)
 	return ;
 }
 
+void	minishell(char *str)
+{
+	add_history(str);
+	if (check_string(str))
+	{
+		cmds_split(handle_commands(str, this()->env, -1));
+		executor(this()->cmds);
+	}
+	return ;
+}
+
 int	main(int ac, char **av, char **envp)
 {
 	char	*str;
@@ -42,14 +53,7 @@ int	main(int ac, char **av, char **envp)
 	{
 		str = readline("$minishell:");
 		if (str && *str)
-		{
-			add_history(str);
-			if (check_string(str))
-			{
-				cmds_split(handle_commands(str, this()->env, -1));
-				executor(this()->cmds);
-			}
-		}
+			minishell(str);
 		else if (!str)
 		{
 			rl_clear_history();

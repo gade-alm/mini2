@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:58:52 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/04 15:18:02 by grebin           ###   ########.fr       */
+/*   Updated: 2023/05/04 16:02:38 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/executor.h"
 
-void	close_fds()
+void	close_fds(void)
 {
 	if (this()->cmds->output != 1)
 		close(this()->cmds->output);
@@ -31,7 +31,7 @@ void	update_status(t_shell *shell)
 	}
 }
 
-void	waiting()
+void	waiting(void)
 {
 	while (this()->cmdsindex > 0)
 	{
@@ -41,7 +41,7 @@ void	waiting()
 	update_status(this());
 }
 
-void	forks()
+void	forks(void)
 {
 	this()->cmds->pid = fork();
 	if (this()->cmds->pid == -1)
@@ -54,7 +54,8 @@ void	forks()
 			exit(this()->status);
 		}
 		else
-			exit(this()->status = cmd_handler(this()->env, this()->cmds->input, this()->cmds->output));
+			exit(this()->status = cmd_handler(this()->env, \
+			this()->cmds->input, this()->cmds->output));
 	}
 }
 

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_main_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:44:42 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/04 15:46:23 by grebin           ###   ########.fr       */
+/*   Updated: 2023/05/04 16:01:50 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
-
 
 void	red_handler2(int i, char *file, int ncmd)
 {
@@ -26,9 +25,9 @@ void	red_handler2(int i, char *file, int ncmd)
 	{
 		if (selectnode(this()->cmds, ncmd)->output != 1)
 			close(selectnode(this()->cmds, ncmd)->output);
-		(selectnode)(this()->cmds, ncmd)->output = open(file, O_CREAT | O_APPEND, 0644);
+		(selectnode)(this()->cmds, ncmd)->output = \
+		open(file, O_CREAT | O_APPEND, 0644);
 	}
-	
 }
 
 void	red_handler(int i, char *file, int ncmd)

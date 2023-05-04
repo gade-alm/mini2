@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 08:20:18 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/04 15:33:58 by grebin           ###   ########.fr       */
+/*   Updated: 2023/05/04 16:20:41 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,48 +91,3 @@ int	is_builtin(void)
 	this()->cmds->cmd[0], 7) == 0 || \
 	ft_strncmp("env", this()->cmds->cmd[0], 4) == 0);
 }
-
-/* void	executor(t_cmd *cmd)
-{
-	while (this()->cmds)
-	{
-		if (!this()->cmds->cmd)
-		{
-			if (this()->cmds->output != 1)
-				close(this()->cmds->output);
-			if (this()->cmds->input != 0)
-				close(this()->cmds->input);
-			rmnode(&this()->cmds);
-			if (!this()->cmds)
-				break ;
-		}
-		if (is_builtin() && this()->cmdsindex == 1)
-		{
-			builtins(cmd);
-			return ;
-		}
-		this()->cmds->pid = fork();
-		if (this()->cmds->pid == -1)
-			prints("Error creating second fork", 2, this()->cmds->cmd[0]);
-		if (this()->cmds->pid == 0)
-		{
-			if (is_builtin())
-			{
-				builtins(this()->cmds);
-				exit(this()->status);
-			}
-			else
-				exit(this()->status = cmd_handler(this()->env, this()->cmds->input, this()->cmds->output));
-		}
-		if (this()->cmds->output != 1)
-			close(this()->cmds->output);
-		if (this()->cmds->input != 0)
-			close(this()->cmds->input);
-		rmnode(&this()->cmds);
-	}
-	while (this()->cmdsindex > 0)
-	{
-		this()->cmdsindex--;
-		wait(NULL);
-	}
-} */
