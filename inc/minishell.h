@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:53:03 by gabriel           #+#    #+#             */
-/*   Updated: 2023/04/19 11:57:27 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/04 10:55:47 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@
 # include "env.h"
 # include "struct.h"
 # include "strings.h"
-
-void	sig_handler(int signal);
 
 //EXPANDER AREA
 char	*expand_var(char *str, char **env, int i);

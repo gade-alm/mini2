@@ -3,16 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:13:25 by gabriel           #+#    #+#             */
-/*   Updated: 2023/05/03 12:40:00 by grebin           ###   ########.fr       */
+/*   Updated: 2023/05/04 11:56:47 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 #include <readline/readline.h>
 #include <readline/history.h>
+
+static void	sig_handler(int signal)
+{
+	if (signal == SIGQUIT)
+		return ;
+	if (signal == SIGINT && !this()->cmds)
+	{
+		this()->status = 130;
+		write (1, "\n", 1);
+		rl_on_new_line();
+		rl_replace_line("", 0);
+		rl_redisplay();
+	}
+	return ;
+}
 
 int	main(int ac, char **av, char **envp)
 {

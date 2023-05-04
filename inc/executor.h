@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 08:21:06 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/03 10:44:18 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/04 11:06:33 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_sig{
 t_sig	*sigcall(void);
 void	executor(t_cmd *cmd);
 void	builtins(t_cmd *cmd);
+void	child_clean(t_cmd *cmd);
 void	prep_fd(t_cmd *cmd);
 int		heredocs(char *delim);
 

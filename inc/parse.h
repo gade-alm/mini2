@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 11:52:53 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/04/19 11:53:16 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/04 10:19:40 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		check_strings_2(char *str);
 int		check_redir(char *str, int i, char redir);
 int		check_redirection(char *str, int i, char c);
 int		token_helper(char *str, char c, int i);
+int		token_helper_2(char *str, int i);
 int		check_heredocs(char *str, int i);
 int		token_len(char *str);
 char	**handle_commands(char *str, char **envp, int i);

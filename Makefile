@@ -6,7 +6,7 @@
 #    By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/25 10:52:52 by gabriel           #+#    #+#              #
-#    Updated: 2023/05/03 11:30:53 by gade-alm         ###   ########.fr        #
+#    Updated: 2023/05/04 11:22:46 by gade-alm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,6 @@ SRCS		= $(SRCS_DIR)/main.c \
 			$(SRCS_DIR)/lists/listutils_01.c \
 			$(SRCS_DIR)/lists/listutils_02.c \
 			$(SRCS_DIR)/lists/listsred.c \
-			$(SRCS_DIR)/signals/sig_handler.c \
 
 SRCS_DIR	= srcs
 
@@ -54,7 +53,7 @@ endif
 
 CC			= cc
 
-CFLAGS 		= -Wall -Wextra -Werror $(INC) -g -fsanitize=address
+CFLAGS 		= -Wall -Wextra -Werror $(INC) -g #-fsanitize=address
 
 RM 			= rm -rf
 

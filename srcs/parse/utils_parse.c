@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 16:35:10 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/04/20 11:23:48 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/04 10:20:03 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,23 @@ int	token_len(char *str)
 		}
 		else if (str[i])
 		{
-			while (str[i] && !ft_strrchr(" \t|<>", str[i]))
-			{
-				if (str[i] == '\"')
-					i = token_helper(str, '\"', i);
-				else if (str[i] == '\'')
-					i = token_helper(str, '\'', i);
-				if (str[i] && !ft_strrchr(" \t|<>", str[i]))
-					i++;
-			}
-			break ;
+			i = token_helper_2(str, i);
 		}
+		break ;
+	}
+	return (i);
+}
+
+int	token_helper_2(char *str, int i)
+{
+	while (str[i] && !ft_strrchr(" \t|<>", str[i]))
+	{
+		if (str[i] == '\"')
+			i = token_helper(str, '\"', i);
+		else if (str[i] == '\'')
+			i = token_helper(str, '\'', i);
+		if (str[i] && !ft_strrchr(" \t|<>", str[i]))
+			i++;
 	}
 	return (i);
 }

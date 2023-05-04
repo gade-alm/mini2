@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:52:38 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/03 12:23:00 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/04 11:43:47 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,14 @@ void	heredocs_ctrl_d(char *temp, char *delim)
 		return ;
 	if (sigcall()->value[1] != -1)
 		close (sigcall()->value[1]);
-	printf("bash: warning(wanted %s)\n", delim);
-	rl_clear_history();
+	printf("minishell: warning: here-document delimited by end-of-file \
+	(wanted %s)\n", delim);
 	free (temp);
+	child_clean(this()->cmds->next);
 	exit(this()->status);
 }
 
-void	heredocs_sig_handler(int signal)
+static void	heredocs_sig_handler(int signal)
 {
 	if (signal == SIGQUIT)
 		return ;
@@ -62,7 +63,6 @@ void	heredocs_sig_handler(int signal)
 			close(sigcall()->value[1]);
 			this()->status = 130;
 			write (1, "\n", 1);
-			sigcall()->check = 1;
 			exit(this()->status);
 		}
 	}
