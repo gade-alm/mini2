@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 17:02:48 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/27 17:30:49 by grebin           ###   ########.fr       */
+/*   Updated: 2023/05/04 12:37:44 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	unset(t_cmd *cmd)
 		if (ft_strncmp(cmd->cmd[1], this()->env[i], \
 		ft_strlen(cmd->cmd[1])) == 0)
 		{
-			this()->env = rm_var(cmd->cmd[1], \
+			(this())->env = rm_var(cmd->cmd[1], \
 			(this())->env, ft_strlen(cmd->cmd[1]));
 			return (1);
 		}

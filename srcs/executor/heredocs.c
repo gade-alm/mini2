@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:52:38 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/04 11:43:47 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/04 12:39:37 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,6 @@ char	*expand_var_loop(char *str)
 		}
 	}
 	return (str);
-}
-
-void	heredocs_ctrl_d(char *temp, char *delim)
-{
-	(void)delim;
-	if (temp)
-		return ;
-	if (sigcall()->value[1] != -1)
-		close (sigcall()->value[1]);
-	printf("minishell: warning: here-document delimited by end-of-file \
-	(wanted %s)\n", delim);
-	free (temp);
-	child_clean(this()->cmds->next);
-	exit(this()->status);
 }
 
 static void	heredocs_sig_handler(int signal)

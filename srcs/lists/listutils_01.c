@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   listutils_01.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 13:44:02 by hcoutinh          #+#    #+#             */
-/*   Updated: 2023/04/27 16:04:44 by grebin           ###   ########.fr       */
+/*   Updated: 2023/05/04 12:36:20 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	rmnode(t_cmd **list)
 {
 	t_cmd	*temp;
 	int		i;
-
 
 	temp = selectnode(*list, 0);
 	if (!temp)

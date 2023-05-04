@@ -6,7 +6,7 @@
 #    By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/25 10:52:52 by gabriel           #+#    #+#              #
-#    Updated: 2023/05/04 11:22:46 by gade-alm         ###   ########.fr        #
+#    Updated: 2023/05/04 12:40:06 by gade-alm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS		= $(SRCS_DIR)/main.c \
 			$(SRCS_DIR)/env/path.c \
 			$(SRCS_DIR)/executor/executor.c \
 			$(SRCS_DIR)/executor/heredocs.c \
+			$(SRCS_DIR)/executor/signals.c \
 			$(SRCS_DIR)/utils/struct.c \
 			$(SRCS_DIR)/builtins/builtins.c \
 			$(SRCS_DIR)/builtins/builtins1.c \

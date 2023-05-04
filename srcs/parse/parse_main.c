@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:38:11 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/03 10:40:33 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/04 12:50:27 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	pipe_handler(t_cmd *first, t_cmd *second)
 {
-	int fd[2];
+	int	fd[2];
 
 	if (pipe(fd) == -1)
 		return (prints("minishell: pipe error", 2, NULL));
@@ -41,27 +41,28 @@ void	red_handler(int i, char *file, int ncmd)
 	{
 		if (selectnode(this()->cmds, ncmd)->input != 0)
 			close(selectnode(this()->cmds, ncmd)->input);
-		selectnode(this()->cmds, ncmd)->input = heredocs(file);
+		(selectnode)(this()->cmds, ncmd)->input = heredocs(file);
 	}
 	if (i == 3)
 	{
 		if (selectnode(this()->cmds, ncmd)->output != 1)
 			close(selectnode(this()->cmds, ncmd)->output);
-		selectnode(this()->cmds, ncmd)->output = open(file, O_CREAT | O_TRUNC, 0644);
+		(selectnode)(this()->cmds, ncmd)->output = \
+		open(file, O_CREAT | O_TRUNC, 0644);
 	}
 	if (i == 4)
 	{
 		if (selectnode(this()->cmds, ncmd)->output != 1)
 			close(selectnode(this()->cmds, ncmd)->output);
-		selectnode(this()->cmds, ncmd)->output = open(file, O_CREAT | O_APPEND, 0644);
+		(selectnode)(this()->cmds, ncmd)->output = open(file, O_CREAT | O_APPEND, 0644);
 	}
 }
 
-char **fill_cmd(char *next, int ncmd)
+char	**fill_cmd(char *next, int ncmd)
 {
-	char **temp;
-	char **cmd;
-	int	i;
+	char	**temp;
+	char	**cmd;
+	int		i;
 
 	i = 0;
 	cmd = selectnode(this()->cmds, ncmd)->cmd;
@@ -93,8 +94,9 @@ int	set_cmd(char **arg, int i, int ncmd)
 	}
 	while (arg && arg[i] && arg[i][0] != '|')
 	{
-		if((arg[i][0] == '<' || arg[i][0] == '>'))
-			red_handler((arg[i][0] == '<') + (3 * (arg[i][0] == '>')) + (ft_strlen(arg[i]) == 2), arg[i + 1], ncmd);
+		if ((arg[i][0] == '<' || arg[i][0] == '>'))
+			red_handler((arg[i][0] == '<') + (3 * (arg[i][0] == '>')) \
+			+ (ft_strlen(arg[i]) == 2), arg[i + 1], ncmd);
 		else
 			fill_cmd(arg[i], ncmd);
 		i += (arg[i][0] == '<' || arg[i][0] == '>') + 1;
@@ -104,8 +106,8 @@ int	set_cmd(char **arg, int i, int ncmd)
 
 int	check_path(t_cmd *cmd)
 {
-	char *temp;
-	char *temp2;
+	char	*temp;
+	char	*temp2;
 
 	if (!cmd->cmd || !*cmd->cmd)
 		return (0);
@@ -119,10 +121,10 @@ int	check_path(t_cmd *cmd)
 	return (1);
 }
 
-void cmds_split(char **arg)
+void	cmds_split(char **arg)
 {
-	int	i;
-	int	ncmd;
+	int		i;
+	int		ncmd;
 	t_cmd	*temp;
 
 	ncmd = 0;
@@ -136,7 +138,8 @@ void cmds_split(char **arg)
 		ncmd++;
 	}
 	while (--ncmd > 0)
-		pipe_handler(selectnode(this()->cmds, ncmd - 1), selectnode(this()->cmds, ncmd));
+		pipe_handler(selectnode(this()->cmds, ncmd - 1), \
+		selectnode(this()->cmds, ncmd));
 	temp = this()->cmds;
 	while (temp)
 	{
@@ -145,5 +148,4 @@ void cmds_split(char **arg)
 	}
 	if (arg)
 		free_matrix(arg);
-	// printlist(this()->cmds);
 }

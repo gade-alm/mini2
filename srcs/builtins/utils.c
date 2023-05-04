@@ -6,20 +6,19 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 15:21:40 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/28 10:56:57 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/04 12:37:10 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/builtins.h"
 
-
 int	print_export(char **env)
 {
-	int i;
+	int	i;
 
 	i = -1;
-		while (env[++i])
-			printf("declare -x %s\n", env[i]);
+	while (env[++i])
+		printf("declare -x %s\n", env[i]);
 	return (1);
 }
 
