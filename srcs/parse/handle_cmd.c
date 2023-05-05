@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:44:03 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/04/20 11:18:31 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/05 09:29:40 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	check_double_redir(char **split, int i)
 
 int	not_expand(char *str, int i)
 {
-	while (str[i] && str[i] != '\'')
-		i++;
+	while (str[++i] && str[i] != '\'')
+		;
 	return (i);
 }
 

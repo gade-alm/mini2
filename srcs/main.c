@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:13:25 by gabriel           #+#    #+#             */
-/*   Updated: 2023/05/04 16:38:21 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/05/05 11:17:34 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 static void	sig_handler(int signal)
 {
 	if (signal == SIGQUIT)
-		return ;
+		printf("\b\b  \b\b");
 	if (signal == SIGINT && !this()->cmds)
 	{
 		this()->status = 130;
-		write (1, "\n", 1);
+		printf ("\n");
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();
@@ -29,7 +29,7 @@ static void	sig_handler(int signal)
 	return ;
 }
 
-void	minishell(char *str)
+void	history_parse(char *str)
 {
 	add_history(str);
 	if (check_string(str))
@@ -53,7 +53,7 @@ int	main(int ac, char **av, char **envp)
 	{
 		str = readline("$minishell:");
 		if (str && *str)
-			minishell(str);
+			history_parse(str);
 		else if (!str)
 		{
 			rl_clear_history();

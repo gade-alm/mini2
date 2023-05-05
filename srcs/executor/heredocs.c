@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:52:38 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/04 12:39:37 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/05 10:45:05 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*expand_var_loop(char *str)
 static void	heredocs_sig_handler(int signal)
 {
 	if (signal == SIGQUIT)
-		return ;
+		printf("\b\b  \b\b");
 	if (signal == SIGINT)
 	{
 		if (sigcall()->value[1] != -1)
@@ -49,6 +49,7 @@ static void	heredocs_sig_handler(int signal)
 			close(sigcall()->value[1]);
 			this()->status = 130;
 			write (1, "\n", 1);
+			rl_clear_history();
 			exit(this()->status);
 		}
 	}
@@ -57,8 +58,8 @@ static void	heredocs_sig_handler(int signal)
 
 void	forks_heredocs(char *temp, char *delim)
 {
-	signal(SIGINT, heredocs_sig_handler);
 	signal(SIGQUIT, heredocs_sig_handler);
+	signal(SIGINT, heredocs_sig_handler);
 	close (sigcall()->value[0]);
 	while (ft_strncmp(temp, delim, ft_strlen(temp)) != 0)
 	{
