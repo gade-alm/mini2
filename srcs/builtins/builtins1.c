@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:48:52 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/05 09:55:32 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/05 15:20:12 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	export(t_cmd *cmd, char **env)
 		printerror("malloc error", 2);
 	while (temp[++i] != '=' && temp[i])
 		;
-	if (temp[i] != '=' || !ft_strlen(temp + i + 1))
+	if (temp[i] != '=')
 	{
 		free(temp);
 		return (0);

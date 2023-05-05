@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   listutils_01.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 13:44:02 by hcoutinh          #+#    #+#             */
-/*   Updated: 2023/05/04 12:36:20 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/05 17:30:11 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_cmd	*createnode(char **cmd)
 		return (NULL);
 	objs->input = 0;
 	objs->output = 1;
+	objs->error = 0;
+	objs->errormsg = NULL;
 	objs->path = NULL;
 	objs->cmd = cmd;
 	objs->next = NULL;
@@ -78,6 +80,8 @@ void	rmnode(t_cmd **list)
 			free(temp->cmd[i]);
 		free(temp->cmd);
 	}
+	if (temp->errormsg)
+		free(temp->errormsg);
 	if (temp->path)
 		free(temp->path);
 	if (temp)

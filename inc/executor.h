@@ -6,7 +6,7 @@
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 08:21:06 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/04 15:34:43 by grebin           ###   ########.fr       */
+/*   Updated: 2023/05/05 15:01:25 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ int		heredocs(char *delim);
 
 int		is_builtin(void);
 int		cmd_handler(char **env, int input, int output);
+void	update_status(t_shell *shell);
 
 #endif

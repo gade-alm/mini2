@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:58:52 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/05 11:13:46 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/05 17:28:48 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ void	waiting(void)
 
 void	forks(void)
 {
+	if (this()->cmds->error == 1)
+		prints("No such file or directory", 2, this()->cmds->errormsg);
+	if (this()->cmds->input == -1)
+		return ;
 	this()->cmds->pid = fork();
 	if (this()->cmds->pid == -1)
 		prints("Error creating second fork", 2, this()->cmds->cmd[0]);

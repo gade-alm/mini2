@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredocs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:52:38 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/05 10:45:05 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/05 17:32:28 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ int	heredocs(char *delim)
 	}
 	else if (pid_heredocs == 0)
 		forks_heredocs(NULL, delim);
-	wait(NULL);
+	wait(&this()->status);
+	update_status(this());
 	close(sigcall()->value[1]);
 	return (sigcall()->value[0]);
 }
