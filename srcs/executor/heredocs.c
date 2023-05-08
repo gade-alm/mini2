@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredocs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:52:38 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/05 17:32:28 by grebin           ###   ########.fr       */
+/*   Updated: 2023/05/08 12:48:50 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ static void	heredocs_sig_handler(int signal)
 		{
 			close(sigcall()->value[1]);
 			this()->status = 130;
-			write (1, "\n", 1);
 			rl_clear_history();
+			write (1, "\n", 1);
 			exit(this()->status);
 		}
 	}

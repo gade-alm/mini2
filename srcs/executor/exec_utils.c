@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:58:52 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/05 17:28:48 by grebin           ###   ########.fr       */
+/*   Updated: 2023/05/08 12:42:40 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	forks(void)
 		prints("Error creating second fork", 2, this()->cmds->cmd[0]);
 	if (this()->cmds->pid == 0)
 	{
+		signal(SIGQUIT, sig_handler);
+		signal(SIGINT, sig_handler);
 		if (is_builtin())
 		{
 			builtins(this()->cmds);

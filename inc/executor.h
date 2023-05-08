@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 08:21:06 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/05 15:01:25 by grebin           ###   ########.fr       */
+/*   Updated: 2023/05/08 11:00:39 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,13 @@ void	heredocs_ctrl_d(char *temp, char *delim);
 void	child_clean(t_cmd *cmd);
 void	prep_fd(t_cmd *cmd);
 int		heredocs(char *delim);
-
+void	sig_handler(int signal);
+void	sig_write(int signal);
 int		is_builtin(void);
 int		cmd_handler(char **env, int input, int output);
 void	update_status(t_shell *shell);
 
 #endif
+
+// signal(SIGQUIT, sig_handler);
+// signal(SIGINT, sig_handler);
