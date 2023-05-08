@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 08:21:06 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/08 11:00:39 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/08 14:49:44 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	child_clean(t_cmd *cmd);
 void	prep_fd(t_cmd *cmd);
 int		heredocs(char *delim);
 void	sig_handler(int signal);
-void	sig_write(int signal);
+void	sig_test(int signal);
 int		is_builtin(void);
 int		cmd_handler(char **env, int input, int output);
 void	update_status(t_shell *shell);
