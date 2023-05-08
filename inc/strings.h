@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   strings.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 17:43:15 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/19 11:57:12 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/08 15:47:17 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int			ft_strcmp(const char *s1, const char *s2);
 int			is_space(char *str, int i);
 char		*ft_strrchr(const char *s, int c);
 char		*ft_strchr(const char *s, int c);
+int			here_comp(char *temp, char *delim);
 
 #endif

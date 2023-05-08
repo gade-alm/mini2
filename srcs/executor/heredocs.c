@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredocs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:52:38 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/08 12:48:50 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/08 15:47:42 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	forks_heredocs(char *temp, char *delim)
 	signal(SIGQUIT, heredocs_sig_handler);
 	signal(SIGINT, heredocs_sig_handler);
 	close (sigcall()->value[0]);
-	while (ft_strncmp(temp, delim, ft_strlen(temp)) != 0)
+	while (1)
 	{
 		if (temp)
 		{
@@ -72,6 +72,8 @@ void	forks_heredocs(char *temp, char *delim)
 		temp = readline("<<: ");
 		if (!temp)
 			heredocs_ctrl_d(temp, delim);
+		if (here_comp(temp, delim) == 1)
+			break ;
 	}
 	if (temp)
 		free(temp);

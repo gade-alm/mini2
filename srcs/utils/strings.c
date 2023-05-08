@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   strings.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 17:40:15 by grebin            #+#    #+#             */
-/*   Updated: 2023/03/22 17:09:40 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/08 15:47:06 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,16 @@ char	*ft_strncpy(char *str, char *temp, int size)
 	}
 	temp[j] = '\0';
 	return (temp);
+}
+
+int	here_comp(char *temp, char *delim)
+{
+	int	i;
+
+	i = -1;
+	while (temp[++i] && temp[i] == delim[i])
+		;
+	if (temp[i] == '\0' && delim[i] == '\0')
+		return (1);
+	return (0);
 }
