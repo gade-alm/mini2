@@ -6,7 +6,7 @@
 /*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 08:20:18 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/09 14:24:09 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:32:16 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,9 @@ int	cmd_handler(char **env, int input, int output)
 {
 	if (set_path(this()->cmds) == -1)
 	{
-		prints("Command not found:", 2, this()->cmds->cmd[0]);
+		if (!this()->cmds->path)
+			this()->cmds->path = ft_strdup(this()->cmds->cmd[0]);
+		prints("Command not found", 2, this()->cmds->path);
 		return (127);
 	}
 	child_clean(this()->cmds->next);
