@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:44:03 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/05/05 09:29:40 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/09 12:18:35 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	**handle_commands(char *str, char **env, int i)
 				j = -1;
 			}
 		}
-		split[i] = remove_quotes(split[i], -1, 0);
+		split[i] = remove_quotes(split[i]);
 	}
 	return (split);
 }

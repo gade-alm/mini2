@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:53:03 by gabriel           #+#    #+#             */
-/*   Updated: 2023/05/05 11:16:53 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/09 12:29:18 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		verify_var(char *str, char *env);
 char	*find_var(char *str, int i);
 int		expander_len(char *str);
 char	*env_value(char *key, char **env, char *str, int x);
-char	*remove_quotes(char *str, int i, int j);
+char	*remove_quotes(char *str);
 char	*remove_single_quotes(char *str, int i, int j);
 char	*remove_double_quotes(char *str, int i, int j);
 
