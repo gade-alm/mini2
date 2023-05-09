@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:59:59 by grebin            #+#    #+#             */
-/*   Updated: 2023/04/20 10:32:14 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/09 14:24:00 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	find_path(t_cmd *cmd, char *path)
 {
 	char	*temp;
 
-	if (!path)
+	if (!path || !*cmd->cmd[0])
 		return (-1);
 	path += 5;
 	while (*path)

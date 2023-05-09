@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:58:52 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/09 13:16:52 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/09 14:24:05 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	executor(t_cmd *cmd)
 {
 	while (this()->cmds)
 	{
-		printlist(this()->cmds);
 		if (!this()->cmds->cmd)
 		{
 			close_fds();
