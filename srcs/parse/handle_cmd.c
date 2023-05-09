@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_cmd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:44:03 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/05/09 12:18:35 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/09 22:31:06 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ char	**handle_commands(char *str, char **env, int i)
 
 	split = ft_split(str);
 	if (!split)
-		return (0);
+		printerror ("malloc error", 2);
 	while (split[++i])
 	{
 		j = -1;
+		if (i > 0)
+			lower = check_double_redir(split, i);
 		while (split[i][++j])
 		{
-			if (i > 0)
-				lower = check_double_redir(split, i);
 			if (split[i][j] == '\'')
 				j = not_expand(split[i], j);
 			if (split[i][j] == '$' && split[i][j + 1] && lower == 0)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 10:12:13 by gabriel           #+#    #+#             */
-/*   Updated: 2023/05/04 15:13:45 by grebin           ###   ########.fr       */
+/*   Updated: 2023/05/09 21:58:30 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*find_var(char *str, int i)
 		j++;
 	temp = malloc(sizeof(char) * (j + 1));
 	if (!temp)
-		return (NULL);
+		printerror("malloc error", 2);
 	temp[j] = '\0';
 	while (--j > -1)
 		temp[j] = str[--i];
@@ -69,7 +69,7 @@ char	*env_value(char *key, char **env, char *str, int x)
 	len += (env[i] && env[i][len] == '=');
 	value = malloc(sizeof(char) * (ft_strlen(env[i]) * len) + 1);
 	if (!value)
-		return (NULL);
+		printerror("malloc error", 2);
 	j = 0;
 	while (env[i] && env[i][len - 1])
 		value[j++] = env[i][len++];
@@ -88,7 +88,7 @@ char	*join_expander(char *str, char *value, int x)
 	joint = malloc(sizeof(char) * (expander_len(str) + expander_len(value) \
 	+ 1));
 	if (!joint)
-		return (NULL);
+		printerror("malloc error", 2);
 	i = -1;
 	k = -1;
 	j = -1;

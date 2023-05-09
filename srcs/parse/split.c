@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 15:39:01 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/04/20 10:49:16 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/09 21:58:39 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	**ft_split(char *str)
 	num_args = count_args(str);
 	split = malloc(sizeof(char *) * (num_args + 1));
 	if (!split)
-		return (NULL);
+		printerror("malloc error", 2);
 	i = -1;
 	while (++i < num_args)
 	{
