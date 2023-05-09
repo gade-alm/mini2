@@ -6,7 +6,7 @@
 /*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:58:52 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/09 14:24:05 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2023/05/09 14:31:12 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,8 @@ void	close_fds(void)
 
 void	update_status(t_shell *shell)
 {
-	int	status;
-
 	if (WIFEXITED(shell->status))
-	{
-		status = WEXITSTATUS(shell->status);
-		shell->status = status;
-	}
+		shell->status = WEXITSTATUS(shell->status);
 }
 
 void	waiting(void)
@@ -69,13 +64,6 @@ void	executor(t_cmd *cmd)
 {
 	while (this()->cmds)
 	{
-		if (!this()->cmds->cmd)
-		{
-			close_fds();
-			rmnode(&this()->cmds);
-			if (!this()->cmds)
-				break ;
-		}
 		if (is_builtin() && this()->cmdsindex == 1)
 		{
 			builtins(cmd);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredocs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:52:38 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/08 15:47:42 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/05/09 14:32:38 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	heredocs(char *delim)
 	pid_heredocs = fork();
 	if (pid_heredocs == -1)
 	{
-		printf("ERRO NO HEREDOCS RESOLVE AI HENRIQUE\n");
+		printerror("Fork error", 2);
 		return (-1);
 	}
 	else if (pid_heredocs == 0)
