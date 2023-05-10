@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 16:25:24 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/04/27 17:27:06 by grebin           ###   ########.fr       */
+/*   Updated: 2023/05/10 12:45:54 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ char	**create_env(char **env)
 		new[i] = ft_strdup(env[i]);
 		if (!new)
 		{
-			free(new);
+			free_matrix(env);
 			return (NULL);
 		}
 	}

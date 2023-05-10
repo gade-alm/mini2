@@ -6,7 +6,7 @@
 #    By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/25 10:52:52 by gabriel           #+#    #+#              #
-#    Updated: 2023/05/10 11:00:54 by gade-alm         ###   ########.fr        #
+#    Updated: 2023/05/10 12:53:09 by gade-alm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ endif
 
 CC			= cc
 
-CFLAGS 		= -Wall -Wextra -Werror $(INC) -g -fsanitize=address
+CFLAGS 		= -Wall -Wextra -Werror $(INC) -g #-fsanitize=address
 
 RM 			= rm -rf
 
@@ -73,5 +73,7 @@ clean:
 	
 fclean: clean
 	$(RM) $(NAME) $(OBJS)
+valgrind:	re
+	valgrind --suppressions=txt/.ignore_readline --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --log-file=valgrind-out.txt ./minishell
 
 re: fclean all
