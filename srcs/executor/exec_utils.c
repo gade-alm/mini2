@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:58:52 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/09 14:31:12 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2023/05/10 11:02:40 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,11 @@ void	executor(t_cmd *cmd)
 {
 	while (this()->cmds)
 	{
+		if (this()->cmds->cmd)
+		{
+			rmnode(&this()->cmds);
+			return ;
+		}
 		if (is_builtin() && this()->cmdsindex == 1)
 		{
 			builtins(cmd);
