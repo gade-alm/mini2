@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:39:40 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/05/08 14:51:24 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/05/10 14:08:53 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	sig_handler(int signal)
 	{
 		write (1, "\n", 1);
 		this()->status = 130;
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
+		//rl_on_new_line();
+		//rl_replace_line("", 0);
+		//rl_redisplay();
 	}
 	return ;
 }

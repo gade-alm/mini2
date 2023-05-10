@@ -6,7 +6,7 @@
 /*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:44:42 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/05 17:31:16 by grebin           ###   ########.fr       */
+/*   Updated: 2023/05/10 14:07:06 by grebin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void	red_handler2(int i, char *file, int ncmd)
 		if (selectnode(this()->cmds, ncmd)->output != 1)
 			close(selectnode(this()->cmds, ncmd)->output);
 		(selectnode)(this()->cmds, ncmd)->output = \
-		open(file, O_CREAT | O_TRUNC, 0644);
+		open(file, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	}
 	if (i == 4)
 	{
 		if (selectnode(this()->cmds, ncmd)->output != 1)
 			close(selectnode(this()->cmds, ncmd)->output);
 		(selectnode)(this()->cmds, ncmd)->output = \
-		open(file, O_CREAT | O_APPEND, 0644);
+		open(file, O_CREAT | O_WRONLY  | O_APPEND, 0644);
 	}
 }
 
