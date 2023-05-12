@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredocs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:52:38 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/11 17:50:58 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/05/12 12:20:14 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ static void	heredocs_sig_handler(int signal)
 			free_matrix(this()->env);
 			rl_clear_history();
 			close(sigcall()->value[1]);
+			close(sigcall()->value[0]);
+			free_matrix(sigcall()->split);
 			exit(this()->status);
 		}
 	}
@@ -62,7 +64,7 @@ void	forks_heredocs(char *temp, char *delim)
 {
 	signal(SIGQUIT, heredocs_sig_handler);
 	signal(SIGINT, heredocs_sig_handler);
-	close (sigcall()->value[0]);
+	close(sigcall()->value[0]);
 	while (1)
 	{
 		if (temp)
@@ -79,6 +81,10 @@ void	forks_heredocs(char *temp, char *delim)
 	}
 	if (temp)
 		free(temp);
+	close(sigcall()->value[1]);
+	rmlist(&this()->cmds);
+	free_matrix(this()->env);
+	free_matrix(sigcall()->split);
 	exit(this()->status);
 }
 
@@ -87,18 +93,14 @@ int	heredocs(char *delim)
 	int	pid_heredocs;
 
 	if (pipe(sigcall()->value) == -1)
-		return (-1);
+		printerror("Pipe error", 2);
 	pid_heredocs = fork();
 	if (pid_heredocs == -1)
-	{
 		printerror("Fork error", 2);
-		return (-1);
-	}
 	else if (pid_heredocs == 0)
 		forks_heredocs(NULL, delim);
 	wait(&this()->status);
 	update_status(this());
 	close(sigcall()->value[1]);
-	close (sigcall()->value[0]);
 	return (sigcall()->value[0]);
 }

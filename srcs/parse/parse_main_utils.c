@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_main_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:44:42 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/10 14:07:06 by grebin           ###   ########.fr       */
+/*   Updated: 2023/05/12 11:53:49 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	red_handler2(int i, char *file, int ncmd)
 		if (selectnode(this()->cmds, ncmd)->output != 1)
 			close(selectnode(this()->cmds, ncmd)->output);
 		(selectnode)(this()->cmds, ncmd)->output = \
-		open(file, O_CREAT | O_WRONLY  | O_APPEND, 0644);
+		open(file, O_CREAT | O_WRONLY | O_APPEND, 0644);
 	}
 }
 

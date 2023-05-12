@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:39:40 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/05/11 14:39:32 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/05/12 12:15:43 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ void	heredocs_ctrl_d(char *temp, char *delim)
 	(void)delim;
 	if (temp)
 		return ;
-	if (sigcall()->value[1] != -1)
-		close (sigcall()->value[1]);
 	printf("minishell: warning: here-document delimited by end-of-file \
 	(wanted %s)\n", delim);
 	rmlist(&this()->cmds);
+	close(sigcall()->value[1]);
+	close(sigcall()->value[0]);
 	free_matrix(this()->env);
+	free_matrix(sigcall()->split);
 	exit(this()->status);
 }
 
@@ -34,9 +35,9 @@ void	sig_handler(int signal)
 	{
 		write (1, "\n", 1);
 		this()->status = 130;
-		//rl_on_new_line();
-		//rl_replace_line("", 0);
-		//rl_redisplay();
+		rl_on_new_line();
+		rl_replace_line("", 0);
+		rl_redisplay();
 	}
 	return ;
 }

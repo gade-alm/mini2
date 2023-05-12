@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:38:11 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/10 12:52:09 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/12 12:08:45 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ void	cmds_split(char **arg)
 	t_cmd	*temp;
 
 	ncmd = 0;
+	sigcall()->split = arg;
 	i = 0;
 	this()->cmdsindex = 0;
 	while (arg && arg[i])
