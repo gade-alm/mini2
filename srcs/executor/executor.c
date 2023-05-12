@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 08:20:18 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/12 10:46:15 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:21:55 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,11 @@ int	cmd_handler(char **env, int input, int output)
 
 int	is_builtin(void)
 {
-	return (ft_strncmp("cd", this()->cmds->cmd[0], 3) == 0 || \
-	ft_strncmp("echo", (this())->cmds->cmd[0], 5) == 0 || \
-	ft_strncmp("exit", this()->cmds->cmd[0], 5) == 0 \
-	|| ft_strncmp("unset", this()->cmds->cmd[0], 6) == 0 || ft_strncmp("pwd", \
-	this()->cmds->cmd[0], 4) == 0 || ft_strncmp("export", \
-	this()->cmds->cmd[0], 7) == 0 || \
-	ft_strncmp("env", this()->cmds->cmd[0], 4) == 0);
+	return (ft_strncmp("cd", (this())->cmds->path, 3) == 0 || \
+	ft_strncmp("echo", (this())->cmds->path, 5) == 0 || \
+	ft_strncmp("exit", (this())->cmds->path, 5) == 0 \
+	|| ft_strncmp("unset", (this())->cmds->path, 6) == 0 || ft_strncmp("pwd", \
+	(this())->cmds->path, 4) == 0 || ft_strncmp("export", \
+	(this())->cmds->path, 7) == 0 || \
+	ft_strncmp("env", (this())->cmds->path, 4) == 0);
 }
