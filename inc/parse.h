@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 11:52:53 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/05/04 15:49:00 by grebin           ###   ########.fr       */
+/*   Updated: 2023/05/12 12:51:11 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int		token_len(char *str);
 char	**handle_commands(char *str, char **envp, int i);
 void	cmds_split(char **arg);
 void	red_handler(int i, char *file, int ncmd);
+void	path_temp(void);
 
 #endif

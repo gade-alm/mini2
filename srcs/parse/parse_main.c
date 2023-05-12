@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:38:11 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/12 12:08:45 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/12 12:53:29 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,31 +75,13 @@ int	set_cmd(char **arg, int i, int ncmd)
 	return (i + (arg[i] && arg[i][0] == '|'));
 }
 
-int	check_path(t_cmd *cmd)
-{
-	char	*temp;
-	char	*temp2;
-
-	if (!cmd->cmd || !*cmd->cmd)
-		return (0);
-	temp = ft_strrchr(cmd->cmd[0], '/');
-	if (!temp)
-		return (1);
-	cmd->path = ft_strdup(cmd->cmd[0]);
-	temp2 = cmd->cmd[0];
-	cmd->cmd[0] = ft_strdup(temp + 1);
-	free(temp2);
-	return (1);
-}
-
 void	cmds_split(char **arg)
 {
 	int		i;
 	int		ncmd;
-	t_cmd	*temp;
 
-	ncmd = 0;
 	sigcall()->split = arg;
+	ncmd = 0;
 	i = 0;
 	this()->cmdsindex = 0;
 	while (arg && arg[i])
@@ -112,12 +94,7 @@ void	cmds_split(char **arg)
 	while (--ncmd > 0)
 		pipe_handler(selectnode(this()->cmds, ncmd - 1), \
 		selectnode(this()->cmds, ncmd));
-	temp = this()->cmds;
-	while (temp)
-	{
-		check_path(temp);
-		temp = temp->next;
-	}
+	path_temp();
 	if (arg)
 		free_matrix(arg);
 }

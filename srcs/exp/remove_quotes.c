@@ -6,15 +6,14 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:50:22 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/05/10 12:27:19 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/12 13:04:10 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-char	*remove_char(char *str, char c, int *i)
+static char	*copy_str(char *str, char *temp, int *i, char c)
 {
-	char	*temp;
 	int		check;
 	int		j;
 	int		k;
@@ -22,9 +21,6 @@ char	*remove_char(char *str, char c, int *i)
 	check = 0;
 	j = -1;
 	k = -1;
-	temp = malloc(sizeof(char) * (ft_strlen(str)) - 1);
-	if (!temp)
-		printerror("malloc error", 2);
 	while (str[++j])
 	{
 		if (*i == j && check != 2)
@@ -38,6 +34,17 @@ char	*remove_char(char *str, char c, int *i)
 			temp[++k] = str[j];
 	}
 	temp[++k] = 0;
+	return (temp);
+}
+
+char	*remove_char(char *str, char c, int *i)
+{
+	char	*temp;
+
+	temp = malloc(sizeof(char) * (ft_strlen(str)) - 1);
+	if (!temp)
+		printerror("malloc error", 2);
+	temp = copy_str(str, temp, i, c);
 	free(str);
 	return (temp);
 }
