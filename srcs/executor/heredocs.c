@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredocs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grebin <grebin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 08:52:38 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/10 14:08:57 by grebin           ###   ########.fr       */
+/*   Updated: 2023/05/11 17:50:58 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ int	heredocs(char *delim)
 	wait(&this()->status);
 	update_status(this());
 	close(sigcall()->value[1]);
+	close (sigcall()->value[0]);
 	return (sigcall()->value[0]);
 }
