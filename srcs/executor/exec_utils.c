@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:58:52 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/12 12:19:48 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/12 12:30:20 by hcoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	executor(t_cmd *cmd)
 	{
 		if (!this()->cmds->cmd)
 		{
+			close_fds();
 			rmnode(&this()->cmds);
 			return ;
 		}
