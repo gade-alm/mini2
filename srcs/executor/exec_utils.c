@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:58:52 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/13 06:56:53 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/05/13 16:24:20 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	executor(t_cmd *cmd)
 			rmnode(&this()->cmds);
 			return ;
 		}
+		set_path(this()->cmds);
 		if (!cmd->path)
 			cmd->path = ft_strdup(cmd->cmd[0]);
 		if (is_builtin() && this()->cmdsindex == 1)

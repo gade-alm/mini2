@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:59:59 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/09 14:24:00 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2023/05/13 16:23:32 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*fusion_path(char *s1, char *s2)
 	k = -1;
 	if (!s1 || !s2)
 		return (NULL);
-	i += len(s1) + len(s2);
+	i += ft_strlen(s1) + ft_strlen(s2);
 	s3 = malloc(sizeof(char) * (i + 2));
 	if (!s3)
 		printerror("malloc error", 2);
