@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 08:20:18 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/12 16:03:06 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2023/05/13 06:55:58 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ void	child_clean(t_cmd *cmd)
 
 void	builtins(t_cmd *cmd)
 {
-	if (ft_strncmp("cd", cmd->path, 3) == 0)
+	if (!cmd->path)
+			cmd->path = ft_strdup(cmd->cmd[0]);
+	else if (ft_strncmp("cd", cmd->path, 3) == 0)
 		(this())->status = cd(cmd, this()->env);
 	else if (ft_strncmp("echo", cmd->path, 5) == 0)
 		(this())->status = echo(cmd, cmd->output);

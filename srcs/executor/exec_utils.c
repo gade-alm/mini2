@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcoutinh <hcoutinh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:58:52 by grebin            #+#    #+#             */
-/*   Updated: 2023/05/12 16:05:07 by hcoutinh         ###   ########.fr       */
+/*   Updated: 2023/05/13 06:56:53 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,14 @@ void	executor(t_cmd *cmd)
 {
 	while (this()->cmds)
 	{
-		if (!cmd->path)
-			cmd->path = ft_strdup(cmd->cmd[0]);
 		if (!this()->cmds->cmd)
 		{
 			close_fds();
 			rmnode(&this()->cmds);
 			return ;
 		}
+		if (!cmd->path)
+			cmd->path = ft_strdup(cmd->cmd[0]);
 		if (is_builtin() && this()->cmdsindex == 1)
 		{
 			builtins(cmd);
