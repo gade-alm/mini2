@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 10:12:13 by gabriel           #+#    #+#             */
-/*   Updated: 2023/05/09 21:58:30 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/05/15 10:32:37 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*find_var(char *str, int i)
 	if (str[i + 1] == '?')
 		return ("status");
 	while (str[++i] && str[i] != ' ' && str[i] != '\t' \
-	&& str[i] != '"' && str[i] != '$')
+	&& str[i] != '"' && str[i] != '$' && env_char(str[i]))
 		j++;
 	temp = malloc(sizeof(char) * (j + 1));
 	if (!temp)
@@ -97,7 +97,7 @@ char	*join_expander(char *str, char *value, int x)
 	while (value[++j])
 		joint[++k] = value[j];
 	while (str[++i] && str[i] != ' ' && str[i] != '\t' && str[i] \
-	!= '"' && str[i] != '\'' && str[i] != '$')
+	!= '"' && str[i] != '\'' && str[i] != '$' && env_char(str[i]))
 		;
 	while (str[i])
 		joint[++k] = str[i++];

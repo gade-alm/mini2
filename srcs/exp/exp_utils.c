@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 19:13:38 by gabriel           #+#    #+#             */
-/*   Updated: 2023/04/13 11:28:52 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/05/15 10:32:43 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,12 @@ int	verify_var(char *str, char *env)
 	while (str[++i] && env[i] != '=' && str[i] == env[i])
 		;
 	return (!str[i] && env[i] == '=');
+}
+
+int	env_char(char c)
+{
+	if ((c >= '0' && c <= '9' ) || (c >= 'A' && c <= 'Z') || \
+	(c >= 'a' && c <= 'z') || c == '_' || c == '?')
+		return (1);
+	return (0);
 }
